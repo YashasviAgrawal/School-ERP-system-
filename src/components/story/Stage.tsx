@@ -10,7 +10,8 @@ import { useSceneProgress } from '@/hooks/useSceneProgress'
 import { PINNED_STORY_QUERY, useMediaQuery } from '@/hooks/useMediaQuery'
 import { clamp, easeInOut, easeOut, mix, seg } from '@/lib/anim'
 import { CalloutItem, CALLOUTS } from './Callouts'
-import { HeroCopy, NotificationChip } from './HeroCopy'
+import { site } from '@/lib/site'
+import { DISC_STYLE, HeroBackdrop, HeroCopy, NotificationChip } from './HeroCopy'
 
 /**
  * Desktop opening story, one continuous scroll-scrubbed scene (about 4 screens of scroll):
@@ -180,19 +181,20 @@ export function Stage() {
       <span data-anchor="erp" data-anchor-offset="0" aria-hidden="true" className="pointer-events-none absolute left-0 h-px w-px" style={{ top: '160vh' }} />
 
       <div className="sticky top-0 h-svh overflow-hidden">
+        <HeroBackdrop />
         <div ref={darkBg} className="absolute inset-0 bg-brand-deep" style={{ clipPath: 'circle(0% at 50% 66%)' }} />
         <div ref={lightBg} className="absolute inset-0 bg-canvas" style={{ clipPath: 'circle(0% at 71% 96%)' }} />
         {/* stage disc behind the hero laptop */}
         <div
           ref={disc}
           aria-hidden="true"
-          className="absolute rounded-full bg-brand"
-          style={{ width: 'min(42vw, 72vh)', height: 'min(42vw, 72vh)', left: '71vw', top: '53%', translate: '-50% -50%' }}
+          className="absolute rounded-full"
+          style={{ ...DISC_STYLE, width: 'min(42vw, 72vh)', height: 'min(42vw, 72vh)', left: '71vw', top: '55%', translate: '-50% -50%' }}
         />
 
         {/* hero copy */}
         <div ref={hero} className="absolute inset-0 z-20">
-          <div className="container-x flex h-full items-center pt-[72px]">
+          <div className={`container-x flex h-full items-center ${site.announcement ? 'pt-[112px]' : 'pt-[72px]'}`}>
             <HeroCopy />
           </div>
         </div>

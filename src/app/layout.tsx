@@ -16,7 +16,7 @@ const sans = Figtree({
   display: 'swap',
 })
 
-const title = `${site.name} · Websites, marketing and ERP for schools`
+const title = `${site.name} · School ERP, websites and admission marketing`
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),

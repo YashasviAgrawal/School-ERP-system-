@@ -1,83 +1,58 @@
-'use client'
-
-import { useEffect, useState } from 'react'
+import type { CSSProperties } from 'react'
 import { Reveal } from '@/components/ui/Reveal'
-import { useInView } from '@/hooks/useInView'
-import { prefersReducedMotion } from '@/hooks/useMediaQuery'
-import { easeOut } from '@/lib/anim'
-import { site, type Stat } from '@/lib/site'
+import { SectionHeader } from '@/components/ui/SectionHeader'
+import { site, type Testimonial } from '@/lib/site'
 
+/** The first testimonial is the hero quote; any others sit in cards beneath it. */
 export function Proof() {
-  const t = site.testimonial
+  const [first, ...rest] = site.testimonials
   return (
-    <section data-theme="dark" aria-label="What principals say" className="section bg-brand text-white">
-      <div className="container-x">
-        <Reveal as="figure" className="m-0 max-w-[880px]">
-          <p className="eyebrow bg-white/10 text-brand-light">In their words</p>
-          {/* negative indent hangs the opening quote mark, so every line starts on the grid edge */}
-          <blockquote className="mt-6 -indent-[calc(0.4em+0.25rem)] font-display text-[clamp(1.5rem,2.6vw,2.25rem)] font-medium leading-[1.3] tracking-[-0.02em]">
-            <span aria-hidden="true" className="mr-1 text-brand-light">
-              “
-            </span>
-            {t.quote ?? t.placeholder}
-            <span aria-hidden="true" className="text-brand-light">
-              ”
-            </span>
-          </blockquote>
-          <figcaption className="mt-8 flex items-center gap-4">
-            <span className="grid h-12 w-12 place-items-center rounded-full bg-brand-mid font-display text-[17px] font-semibold">P</span>
-            <span>
-              <strong className="block text-[16px] font-semibold">{t.name}</strong>
-              <span className="text-[15px] text-brand-light">
-                {t.role}, {t.school}
-              </span>
-            </span>
-          </figcaption>
+    <section data-theme="dark" aria-labelledby="proof-title" className="section relative overflow-hidden bg-brand-deep text-white">
+      <div aria-hidden="true" className="bg-grid absolute inset-0 [mask-image:radial-gradient(ellipse_70%_60%_at_50%_30%,#000,transparent_75%)]" style={{ '--grid-line': 'rgb(180 198 222 / .07)' } as CSSProperties} />
+      <div aria-hidden="true" className="glow glow-drift" style={{ width: 560, height: 560, left: '-12%', top: '-30%', background: 'rgb(47 107 255 / .28)' }} />
+
+      <div className="container-x relative">
+        <Reveal>
+          <SectionHeader tone="dark" align="center" id="proof-title" label="In their words" title="Principals on working with us." />
         </Reveal>
 
-        <dl className="mt-14 grid gap-4 md:mt-16 md:grid-cols-3 md:gap-6">
-          {site.stats.map((s, i) => (
-            <Reveal key={s.label} delay={i * 100} className="flex flex-col-reverse rounded-2xl bg-white/[.05] p-6 ring-1 ring-white/10 md:p-7">
-              <dt className="mt-2 text-[15px] text-white/85">{s.label}</dt>
-              <dd className="m-0 font-display text-[clamp(2.25rem,3.6vw,3rem)] font-semibold leading-none tracking-[-0.03em] text-brand-light tabular-nums">
-                <StatValue stat={s} />
-              </dd>
-            </Reveal>
-          ))}
-        </dl>
+        {first && (
+          <Reveal as="figure" delay={100} className="mx-auto mb-0 mt-12 max-w-[960px] rounded-[28px] bg-white/[.05] p-7 ring-1 ring-white/10 backdrop-blur-sm md:mt-14 md:p-12">
+            <span aria-hidden="true" className="block font-display text-[96px] font-bold leading-[.6] text-accent md:text-[120px]">
+              “
+            </span>
+            <blockquote className="mt-4 font-display text-[clamp(1.4rem,2.4vw,2rem)] font-medium leading-[1.35] tracking-[-0.02em]">{first.quote ?? first.placeholder}</blockquote>
+            <Caption t={first} />
+          </Reveal>
+        )}
+
+        {rest.length > 0 && (
+          <div className="mx-auto mt-6 grid max-w-[960px] gap-6 md:grid-cols-2">
+            {rest.map((t, i) => (
+              <Reveal as="figure" key={t.name + i} delay={i * 90} className="m-0 rounded-[24px] bg-white/[.04] p-7 ring-1 ring-white/10">
+                <blockquote className="text-[17px] leading-[1.6] text-white/90">“{t.quote ?? t.placeholder}”</blockquote>
+                <Caption t={t} />
+              </Reveal>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   )
 }
 
-function StatValue({ stat }: { stat: Stat }) {
-  const [ref, inView] = useInView<HTMLSpanElement>()
-  const [n, setN] = useState(0)
-  const target = stat.value
-
-  useEffect(() => {
-    if (!inView || target === null) return
-    if (prefersReducedMotion()) {
-      setN(target)
-      return
-    }
-    let raf = 0
-    const start = performance.now()
-    const tick = (now: number) => {
-      const t = Math.min(1, (now - start) / 1800)
-      setN(Math.round(target * easeOut(t)))
-      if (t < 1) raf = requestAnimationFrame(tick)
-    }
-    raf = requestAnimationFrame(tick)
-    return () => cancelAnimationFrame(raf)
-  }, [inView, target])
-
-  if (target === null) return <span ref={ref}>{stat.placeholder}</span>
+function Caption({ t }: { t: Testimonial }) {
   return (
-    <span ref={ref}>
-      {stat.prefix}
-      {n.toLocaleString('en-IN')}
-      {stat.suffix}
-    </span>
+    <figcaption className="mt-8 flex items-center gap-4">
+      <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-[linear-gradient(135deg,#2F6BFF,#4A6390)] font-display text-[17px] font-semibold">
+        {t.name.replace(/[^A-Za-z]/g, '').charAt(0) || 'P'}
+      </span>
+      <span>
+        <strong className="block text-[16px] font-semibold">{t.name}</strong>
+        <span className="text-[15px] text-brand-light">
+          {t.role}, {t.school}
+        </span>
+      </span>
+    </figcaption>
   )
 }

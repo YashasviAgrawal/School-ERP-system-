@@ -11,17 +11,23 @@ import { SectionHeader } from '@/components/ui/SectionHeader'
 import { useInView } from '@/hooks/useInView'
 import { prefersReducedMotion } from '@/hooks/useMediaQuery'
 import { CalloutItem, CALLOUTS } from './Callouts'
-import { HeroCopy, NotificationChip } from './HeroCopy'
+import { site } from '@/lib/site'
+import { DISC_STYLE, HeroBackdrop, HeroCopy, NotificationChip } from './HeroCopy'
 
 /** The opening story as a normal scrolling flow: phones, tablets, reduced motion and no-JS. */
 export function StoryFlow() {
   return (
     <div className="story-flow">
-      <section data-theme="light" aria-label="Introduction" className="relative overflow-hidden pb-20 pt-[108px] md:pb-28 md:pt-[132px]">
-        <div className="container-x grid items-center gap-14 md:grid-cols-[1.05fr_1fr]">
+      <section
+        data-theme="light"
+        aria-label="Introduction"
+        className={`relative overflow-hidden pb-20 md:pb-28 ${site.announcement ? 'pt-[148px] md:pt-[172px]' : 'pt-[108px] md:pt-[132px]'}`}
+      >
+        <HeroBackdrop />
+        <div className="container-x relative grid items-center gap-14 md:grid-cols-[1.05fr_1fr]">
           <HeroCopy />
           <div className="relative py-8">
-            <div aria-hidden="true" className="absolute left-1/2 top-1/2 aspect-square w-[78%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand" />
+            <div aria-hidden="true" className="absolute left-1/2 top-1/2 aspect-square w-[78%] -translate-x-1/2 -translate-y-1/2 rounded-full" style={DISC_STYLE} />
             <FitScale width={CLOSED_VIEW.w} height={CLOSED_VIEW.h} max={0.62}>
               <ClosedLaptop />
             </FitScale>

@@ -14,13 +14,17 @@ Node 20.9 or newer. Deploy by importing the repo into Vercel; no settings needed
 
 ## What to replace before launch
 
-Everything editable by a non-developer is in **`src/lib/site.ts`**: brand name, URL, address, email, WhatsApp number, the principal's quote, the three numbers, partner logos. Values in `[square brackets]` are placeholders and show as such on the page until you fill them.
+Everything editable by a non-developer is in **`src/lib/site.ts`**: brand name, URL, address, email, WhatsApp number, announcement strip, ERP login link, principals' quotes, the three numbers, FAQ, partner logos. Values in `[square brackets]` are placeholders and show as such on the page until you fill them.
 
 | What | Where |
 | --- | --- |
 | Final brand name | `site.name` in `src/lib/site.ts` |
-| 3 real numbers (shown only when not `null`) | `site.stats` |
-| Principal quote, name, school | `site.testimonial` |
+| 3 real numbers (shown only when not `null`; the first also feeds "Trusted by …" in the hero) | `site.stats` |
+| Principal quotes (first one is shown large, extras as cards) | `site.testimonials` |
+| Announcement strip above the menu (or `null` to remove) | `site.announcement` |
+| Login link in the menu (hidden while empty) | `site.loginUrl` |
+| FAQ, including the pricing and data-safety answers | `site.faqs` |
+| ERP module list (menu, modules grid, footer) | `src/lib/modules.ts`, keep it to what the product really does |
 | Partner school logos | put files in `public/logos/`, list them in `site.partnerLogos` |
 | ERP screenshots (2560px, WebP < 200 KB) | `src/components/devices/ErpScreens.tsx`, one `<img>` per screen (instructions at the top of the file) |
 | Teacher training photo | `TrainingTile` in `src/components/sections/Problems.tsx` |
@@ -48,7 +52,8 @@ src/
   components/
     devices/      Laptop (CSS 3D), ErpScreens, Phone + app screens
     story/        Stage (desktop pinned scroll story), StoryFlow (mobile and reduced-motion version)
-    sections/     Nav, Problems, GetSeen, BeforeAfter, SchoolsMarquee, Proof, FinalCta, DemoForm, Footer
+    sections/     Nav (announcement + Modules mega menu), TrustBar, Problems, Modules (role tabs + module grid),
+                  GetSeen, BeforeAfter, WhyUs, HowItWorks, Proof, Faq, FinalCta, DemoForm, Footer, FloatingWhatsApp
     ui/           Marker (the highlighter stroke), Reveal, AnchorLink, FitScale, Icons, Logo
 ```
 
@@ -61,7 +66,8 @@ src/
 ## Design rules (from the plan)
 
 - One idea per screen; headlines of 8 words or fewer; no paragraphs.
-- Navy is the only button colour. Sky blue is the highlighter. Teal is for large text and accents only (its deeper shade `teal-ink` is used for small text so it passes contrast).
-- The highlighter stroke (`<Marker>`) is used on exactly four headlines: grown, solve, first, grow.
+- Navy is the only button colour. Sky blue is the highlighter. Signal blue (`accent`) is for dots, glows and small highlights only; use `accent-ink` for small text so it passes contrast.
+- Module icons use the six soft tones in `src/lib/modules.ts`, nowhere else.
+- The highlighter stroke (`<Marker>`) is used on exactly three headlines: Grow (hero), solve, first.
 - "Book a demo" is the only call-to-action label.
 - Fonts: Bricolage Grotesque (display) and Figtree (body), served from your own domain by `next/font`. To use Cabinet Grotesk and Satoshi from the plan instead, add their files under `src/fonts/` and switch `layout.tsx` to `next/font/local` with the same CSS variable names.
