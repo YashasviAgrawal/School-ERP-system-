@@ -55,7 +55,7 @@ export function ClosedLaptop({ sweep = true }: { sweep?: boolean }) {
 const KEYS =
   "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 42 40' preserveAspectRatio='none'%3E%3Crect x='2.6' y='2.6' width='36.8' height='34.8' rx='6' fill='%231A2430'/%3E%3Crect x='4' y='3.2' width='34' height='1.6' rx='.8' fill='%23ffffff' fill-opacity='.08'/%3E%3C/svg%3E\")"
 
-const aluminium = 'linear-gradient(180deg,#B6C5D1 0%,#8FA2B3 100%)'
+const aluminium = 'linear-gradient(180deg,#C4C4C7 0%,#9E9EA2 100%)'
 
 export function Laptop({
   rx = -14,
@@ -113,7 +113,7 @@ export function Laptop({
             transformOrigin: '50% 0',
             transform: `translateY(${T + 2}px) rotateX(90deg) translateY(-110px)`,
             background:
-              'radial-gradient(closest-side, rgb(16 24 34 / .46), rgb(16 24 34 / .2) 55%, rgb(16 24 34 / 0))',
+              'radial-gradient(closest-side, rgb(6 15 34 / .46), rgb(6 15 34 / .2) 55%, rgb(6 15 34 / 0))',
           }}
         />
 
@@ -122,7 +122,7 @@ export function Laptop({
           className="absolute"
           style={{ left: -W / 2, top: 0, width: W, height: T, transform: `translateZ(${D}px)`, borderRadius: '0 0 14px 14px', background: aluminium }}
         >
-          <span className="absolute left-1/2 top-0 h-[6px] w-[124px] -translate-x-1/2 rounded-b-[9px] bg-[#7B8FA1]" />
+          <span className="absolute left-1/2 top-0 h-[6px] w-[124px] -translate-x-1/2 rounded-b-[9px] bg-[#8A8A8F]" />
         </div>
         {/* base: side edges */}
         <div className="absolute" style={{ left: -W / 2, top: 0, width: D, height: T, transformOrigin: '0 0', transform: 'rotateY(-90deg)', background: aluminium }} />
@@ -139,15 +139,15 @@ export function Laptop({
             transformOrigin: '50% 0',
             transform: 'rotateX(90deg)',
             borderRadius: '6px 6px 22px 22px',
-            background: 'linear-gradient(180deg,#DAE3EA 0%,#C6D3DD 100%)',
+            background: 'linear-gradient(180deg,#E2E2E4 0%,#D0D0D3 100%)',
             boxShadow: 'inset 0 0 0 1px rgb(255 255 255 / .45)',
           }}
         >
-          <div className="absolute left-1/2 top-[20px] h-[8px] w-[80%] -translate-x-1/2 rounded-full bg-[#BCCAD5]" />
-          <div className="absolute rounded-[13px] bg-[#AEBFCC] p-[6px]" style={{ left: 40, right: 40, top: 44, height: 238 }}>
+          <div className="absolute left-1/2 top-[20px] h-[8px] w-[80%] -translate-x-1/2 rounded-full bg-[#C7C7CA]" />
+          <div className="absolute rounded-[13px] bg-[#BBBBBF] p-[6px]" style={{ left: 40, right: 40, top: 44, height: 238 }}>
             <div className="h-full w-full" style={{ backgroundImage: KEYS, backgroundSize: 'calc(100% / 15) calc(100% / 6)' }} />
           </div>
-          <div className="absolute left-1/2 top-[300px] h-[148px] w-[252px] -translate-x-1/2 rounded-[15px] bg-[#D0DBE4] shadow-[inset_0_0_0_1px_rgb(47_65_86/.12)]" />
+          <div className="absolute left-1/2 top-[300px] h-[148px] w-[252px] -translate-x-1/2 rounded-[15px] bg-[#D8D8DB] shadow-[inset_0_0_0_1px_rgb(14_37_78/.12)]" />
         </div>
 
         {/* lid */}
@@ -155,12 +155,12 @@ export function Laptop({
           {/* screen side */}
           <div
             className="absolute inset-0 overflow-hidden rounded-b-[8px] rounded-t-[22px] bg-device [backface-visibility:hidden]"
-            style={{ padding: '16px 14px 20px', boxShadow: 'inset 0 0 0 1.5px rgb(200 217 230 / .14)' }}
+            style={{ padding: '16px 14px 20px', boxShadow: 'inset 0 0 0 1.5px rgb(180 198 222 / .14)' }}
           >
-            <span className="absolute left-1/2 top-[6px] h-[5px] w-[5px] -translate-x-1/2 rounded-full bg-[#2A3646]" />
-            <div className="relative h-full w-full overflow-hidden rounded-[5px] bg-[#F7F5F2]">
+            <span className="absolute left-1/2 top-[6px] h-[5px] w-[5px] -translate-x-1/2 rounded-full bg-[#2E2E33]" />
+            <div className="relative h-full w-full overflow-hidden rounded-[5px] bg-[#F7F9FC]">
               {screen}
-              <div ref={refs?.power} className={cx('absolute inset-0 grid place-items-center bg-[#0B1118]', powerClassName)} style={powerStyle}>
+              <div ref={refs?.power} className={cx('absolute inset-0 grid place-items-center bg-[#0E0E10]', powerClassName)} style={powerStyle}>
                 <div ref={refs?.logo} style={{ opacity: 0 }}>
                   <LogoMark size={64} tone="dark" />
                 </div>
@@ -173,7 +173,7 @@ export function Laptop({
             className={cx('absolute inset-0 overflow-hidden rounded-b-[8px] rounded-t-[22px] [backface-visibility:hidden]', sweep && 'lid-sweep')}
             style={{
               transform: `translateZ(-${LT}px) rotateY(180deg)`,
-              background: 'linear-gradient(155deg,#EAF0F4 0%,#D1DCE5 46%,#B4C4D0 100%)',
+              background: 'linear-gradient(155deg,#EEEEF0 0%,#D9D9DC 46%,#C1C1C4 100%)',
               boxShadow: 'inset 0 0 0 1px rgb(255 255 255 / .5)',
             }}
           >
@@ -182,9 +182,9 @@ export function Laptop({
             </div>
           </div>
           {/* lid edges */}
-          <div className="absolute left-0 top-0" style={{ width: W, height: LT, transformOrigin: '50% 0', transform: 'rotateX(-90deg)', background: '#A9B9C6', borderRadius: 3 }} />
-          <div className="absolute left-0 top-0" style={{ width: LT, height: D, transformOrigin: '0 50%', transform: 'rotateY(90deg)', background: '#A3B4C2' }} />
-          <div className="absolute top-0" style={{ left: W, width: LT, height: D, transformOrigin: '0 50%', transform: 'rotateY(90deg)', background: '#97A9B8' }} />
+          <div className="absolute left-0 top-0" style={{ width: W, height: LT, transformOrigin: '50% 0', transform: 'rotateX(-90deg)', background: '#B6B6BA', borderRadius: 3 }} />
+          <div className="absolute left-0 top-0" style={{ width: LT, height: D, transformOrigin: '0 50%', transform: 'rotateY(90deg)', background: '#B0B0B4' }} />
+          <div className="absolute top-0" style={{ left: W, width: LT, height: D, transformOrigin: '0 50%', transform: 'rotateY(90deg)', background: '#A5A5AA' }} />
         </div>
       </div>
     </div>

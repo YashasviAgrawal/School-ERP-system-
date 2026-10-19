@@ -10,35 +10,36 @@ import { site, type Stat } from '@/lib/site'
 export function Proof() {
   const t = site.testimonial
   return (
-    <section data-theme="dark" aria-label="What principals say" className="bg-navy py-24 text-beige md:py-36">
-      <div className="container-x max-w-[1120px]">
-        <Reveal as="figure" className="m-0">
-          <p className="eyebrow bg-sky/15 text-sky">In their words</p>
-          <blockquote className="mt-8 font-display text-[clamp(1.9rem,3.7vw,3.3rem)] font-semibold leading-[1.12] tracking-[-0.028em]">
-            <span aria-hidden="true" className="mr-1 text-sky">
+    <section data-theme="dark" aria-label="What principals say" className="section bg-brand text-white">
+      <div className="container-x">
+        <Reveal as="figure" className="m-0 max-w-[880px]">
+          <p className="eyebrow bg-white/10 text-brand-light">In their words</p>
+          {/* negative indent hangs the opening quote mark, so every line starts on the grid edge */}
+          <blockquote className="mt-6 -indent-[calc(0.4em+0.25rem)] font-display text-[clamp(1.5rem,2.6vw,2.25rem)] font-medium leading-[1.3] tracking-[-0.02em]">
+            <span aria-hidden="true" className="mr-1 text-brand-light">
               “
             </span>
             {t.quote ?? t.placeholder}
-            <span aria-hidden="true" className="text-sky">
+            <span aria-hidden="true" className="text-brand-light">
               ”
             </span>
           </blockquote>
-          <figcaption className="mt-9 flex items-center gap-4">
-            <span className="grid h-14 w-14 place-items-center rounded-full bg-teal font-display text-[18px] font-bold">P</span>
+          <figcaption className="mt-8 flex items-center gap-4">
+            <span className="grid h-12 w-12 place-items-center rounded-full bg-brand-mid font-display text-[17px] font-semibold">P</span>
             <span>
-              <strong className="block text-[17px]">{t.name}</strong>
-              <span className="text-[15px] text-sky">
+              <strong className="block text-[16px] font-semibold">{t.name}</strong>
+              <span className="text-[15px] text-brand-light">
                 {t.role}, {t.school}
               </span>
             </span>
           </figcaption>
         </Reveal>
 
-        <dl className="mt-20 grid gap-10 border-t border-sky/20 pt-12 md:mt-24 md:grid-cols-3">
+        <dl className="mt-14 grid gap-4 md:mt-16 md:grid-cols-3 md:gap-6">
           {site.stats.map((s, i) => (
-            <Reveal key={s.label} delay={i * 100} className="flex flex-col-reverse">
-              <dt className="mt-3 text-[17px] text-beige/90">{s.label}</dt>
-              <dd className="m-0 font-display text-[clamp(3.4rem,6vw,5.4rem)] font-extrabold leading-none tracking-[-0.05em] text-sky tabular-nums">
+            <Reveal key={s.label} delay={i * 100} className="flex flex-col-reverse rounded-2xl bg-white/[.05] p-6 ring-1 ring-white/10 md:p-7">
+              <dt className="mt-2 text-[15px] text-white/85">{s.label}</dt>
+              <dd className="m-0 font-display text-[clamp(2.25rem,3.6vw,3rem)] font-semibold leading-none tracking-[-0.03em] text-brand-light tabular-nums">
                 <StatValue stat={s} />
               </dd>
             </Reveal>

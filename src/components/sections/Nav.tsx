@@ -55,13 +55,13 @@ export function Nav() {
 
   return (
     <header ref={header} className="nav fixed inset-x-0 top-0 z-50" data-scrolled={scrolled || open} data-theme={open ? 'light' : theme}>
-      <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:rounded-full focus:bg-navy focus:px-4 focus:py-2 focus:text-beige">
+      <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:rounded-lg focus:bg-brand focus:px-4 focus:py-2 focus:text-white">
         Skip to content
       </a>
       <nav aria-label="Main" className="container-x flex h-[72px] items-center justify-between gap-6">
         <AnchorLink href="#top" aria-label={`${site.name} home`} className="flex items-center gap-2.5" onNavigate={() => setOpen(false)}>
-          <LogoMark tone={dark && !open ? 'light' : 'navy'} />
-          <span className="font-display text-[19px] font-extrabold tracking-[-0.035em] md:text-[21px]">{site.name}</span>
+          <LogoMark tone={dark && !open ? 'light' : 'brand'} />
+          <span className="font-display text-[18px] font-bold tracking-[-0.02em] md:text-[20px]">{site.name}</span>
         </AnchorLink>
 
         <div className="flex items-center gap-2 md:gap-9">
@@ -76,13 +76,13 @@ export function Nav() {
           </ul>
           <AnchorLink
             href="#demo"
-            className="nav-cta inline-flex h-11 items-center whitespace-nowrap rounded-full px-4 text-[14px] font-semibold transition-transform duration-300 hover:-translate-y-px active:scale-[.97] max-[359px]:hidden md:px-5 md:text-[15px]"
+            className="nav-cta inline-flex h-10 items-center whitespace-nowrap rounded-[var(--radius-control)] px-4 text-[14px] font-semibold transition-transform duration-300 hover:-translate-y-px active:scale-[.97] max-[359px]:hidden md:px-5 md:text-[15px]"
           >
             Book a demo
           </AnchorLink>
           <button
             type="button"
-            className="grid h-11 w-11 place-items-center rounded-full lg:hidden"
+            className="grid h-10 w-10 place-items-center rounded-[var(--radius-control)] lg:hidden"
             aria-expanded={open}
             aria-controls="mobile-menu"
             aria-label={open ? 'Close menu' : 'Open menu'}
@@ -95,10 +95,10 @@ export function Nav() {
 
       {open && (
         <div id="mobile-menu" className="container-x pb-6 lg:hidden">
-          <ul className="flex flex-col divide-y divide-navy/10 border-t border-navy/10">
+          <ul className="flex flex-col divide-y divide-ink/10 border-t border-ink/10">
             {LINKS.map((l) => (
               <li key={l.href}>
-                <AnchorLink href={l.href} className="block py-4 font-display text-[26px] font-bold tracking-[-0.02em]" onNavigate={() => setOpen(false)}>
+                <AnchorLink href={l.href} className="block py-4 font-display text-[22px] font-semibold tracking-[-0.02em]" onNavigate={() => setOpen(false)}>
                   {l.label}
                 </AnchorLink>
               </li>

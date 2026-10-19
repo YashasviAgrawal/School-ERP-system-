@@ -14,7 +14,7 @@ export function Marker({ children, immediate = false, color }: { children: React
     <span ref={ref} className="marker" data-shown={immediate || inView} data-immediate={immediate ? '' : undefined} style={style}>
       {children}
       <svg className="marker-svg" viewBox="0 0 300 40" preserveAspectRatio="none" aria-hidden="true">
-        <path d="M6 27 C 60 19, 118 25, 168 21 S 250 16, 294 23" pathLength={1} />
+        <path d="M16 23 C 86 20, 172 23, 284 20" pathLength={1} />
       </svg>
     </span>
   )

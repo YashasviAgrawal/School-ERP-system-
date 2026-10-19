@@ -1,15 +1,14 @@
 import type { Metadata, Viewport } from 'next'
 import type { ReactNode } from 'react'
-import { Bricolage_Grotesque, Figtree } from 'next/font/google'
+import { Figtree, Plus_Jakarta_Sans } from 'next/font/google'
 import { site } from '@/lib/site'
 import './globals.css'
 
 // next/font downloads these at build time and serves them from your own domain.
-const display = Bricolage_Grotesque({
+const display = Plus_Jakarta_Sans({
   subsets: ['latin'],
-  variable: '--font-bricolage',
+  variable: '--font-jakarta',
   display: 'swap',
-  axes: ['opsz'],
 })
 const sans = Figtree({
   subsets: ['latin'],
@@ -36,7 +35,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#F5EFEB',
+  themeColor: '#FFFFFF',
   width: 'device-width',
   initialScale: 1,
 }

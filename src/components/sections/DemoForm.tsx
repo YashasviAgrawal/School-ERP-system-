@@ -62,11 +62,11 @@ export function DemoForm() {
   if (status === 'sent') {
     return (
       <div role="status" className="flex flex-col items-center gap-4 px-2 py-8 text-center">
-        <span className="grid h-16 w-16 place-items-center rounded-full bg-sky text-navy">
+        <span className="grid h-14 w-14 place-items-center rounded-2xl bg-brand text-white">
           <Check size={28} strokeWidth={2.6} />
         </span>
-        <h3 className="text-[28px] font-bold tracking-[-0.025em]">Your demo request is in.</h3>
-        <p className="max-w-[32ch] text-teal-ink">We&apos;ll message you on WhatsApp to fix a time that suits you.</p>
+        <h3 className="h-card">Your demo request is in.</h3>
+        <p className="max-w-[32ch] text-muted">We&apos;ll message you on WhatsApp to fix a time that suits you.</p>
       </div>
     )
   }
@@ -81,7 +81,7 @@ export function DemoForm() {
       </Field>
       <Field id="demo-whatsapp" label="WhatsApp number" error={errors.whatsapp}>
         <div className="flex gap-2">
-          <span className="grid h-[3.4rem] shrink-0 place-items-center rounded-[12px] bg-beige px-4 font-semibold">+91</span>
+          <span className="grid h-12 shrink-0 place-items-center rounded-[var(--radius-control)] bg-canvas px-4 font-semibold">+91</span>
           <input
             id="demo-whatsapp"
             name="whatsapp"
@@ -103,11 +103,11 @@ export function DemoForm() {
       </div>
 
       <div>
-        <label className="flex cursor-pointer items-start gap-3 text-[14px] leading-[1.5] text-teal-ink">
-          <input type="checkbox" name="consent" className="mt-0.5 h-5 w-5 shrink-0 accent-navy" aria-invalid={!!errors.consent} aria-describedby={errors.consent ? 'demo-consent-err' : undefined} />
+        <label className="flex cursor-pointer items-start gap-3 text-[14px] leading-[1.5] text-muted">
+          <input type="checkbox" name="consent" className="mt-0.5 h-5 w-5 shrink-0 accent-brand" aria-invalid={!!errors.consent} aria-describedby={errors.consent ? 'demo-consent-err' : undefined} />
           <span>
             I agree to be contacted on WhatsApp about my demo. Read our{' '}
-            <a href="/privacy" className="font-semibold text-navy underline-offset-4 hover:underline">
+            <a href="/privacy" className="font-semibold text-ink underline-offset-4 hover:underline">
               privacy policy
             </a>
             .

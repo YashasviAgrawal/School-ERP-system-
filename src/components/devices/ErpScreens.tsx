@@ -1,75 +1,154 @@
 import type { ReactNode, RefObject } from 'react'
 import { cx } from '@/lib/cx'
-import { Check } from '@/components/ui/Icons'
 
 /**
- * Stand-in ERP screens drawn at the laptop's native screen size (692 x 434).
- * Replace each screen's contents with the real screenshot when ready:
- *   <img src="/erp/fees.webp" alt="" className="absolute inset-0 h-full w-full object-cover" />
+ * The real ERP admin, redrawn at the laptop's native screen size (692 x 434):
+ * top bar with school name and session, light sidebar, maroon accents on stone greys.
+ * All names and numbers are made up. Never put real students' details on the public site.
  */
 
-const NAV = ['Dashboard', 'Fees', 'Attendance', 'Timetable', 'Teachers', 'Admissions']
+/* ── tiny line icons (lucide shapes), drawn locally so the mockup matches the product ── */
+const ICON = {
+  dashboard: 'M3 3h7v9H3zM14 3h7v5h-7zM14 12h7v9h-7zM3 16h7v5H3z',
+  students: 'M22 10 12 5 2 10l10 5 10-5zM6 12v5c3 2.5 9 2.5 12 0v-5',
+  teachers: 'M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8',
+  classes: 'M4 21V8l8-5 8 5v13M9 21v-6h6v6M2 21h20',
+  resources: 'M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2zM22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z',
+  diary: 'M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z',
+  bell: 'M6 16v-5a6 6 0 0 1 12 0v5l1.5 2h-15zM10 20.5h4',
+  calendar: 'M3 5h18v16H3zM16 3v4M8 3v4M3 10h18',
+  file: 'M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M16 13H8M16 17H8',
+  fees: 'M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6',
+  sessions: 'M21 7.5V5H3v16h7.5M16 3v4M8 3v4M3 10h5M22 16a6 6 0 1 1-12 0 6 6 0 0 1 12 0zM16 14v2.2l1.4 1',
+  promotion: 'M3 8l4-4 4 4M7 4v16M11 12h4M11 16h7M11 20h10',
+  refresh: 'M3 12a9 9 0 0 1 15-6.7L21 8M21 3v5h-5M21 12a9 9 0 0 1-15 6.7L3 16M3 21v-5h5',
+  chevron: 'M6 9l6 6 6-6',
+  search: 'M11 18a7 7 0 1 0 0-14 7 7 0 0 0 0 14zM20 20l-4-4',
+  plus: 'M12 5v14M5 12h14',
+  check: 'M5 12.5l4.2 4.2L19 7',
+} as const
 
-function Shell({ active, children }: { active: number; children: ReactNode }) {
+function Ico({ name, size = 11, className }: { name: keyof typeof ICON; size?: number; className?: string }) {
   return (
-    <div className="absolute inset-0 grid grid-cols-[146px_1fr] text-[11px] leading-[1.35] text-navy">
-      <aside className="flex flex-col gap-[3px] bg-navy px-[10px] py-[14px] text-sky">
-        <div className="mb-[14px] flex items-center gap-[8px] px-[4px]">
-          <span className="grid h-[26px] w-[26px] shrink-0 place-items-center rounded-full bg-sky text-[9.5px] font-bold text-navy">SP</span>
-          <span className="text-[10px] font-semibold leading-[1.15] text-beige">
-            Sunrise Public
-            <br />
-            School
-          </span>
-        </div>
-        {NAV.map((item, i) => (
-          <span
-            key={item}
-            className={cx(
-              'flex items-center gap-[8px] rounded-[7px] px-[8px] py-[6px] text-[10.5px]',
-              i === active && 'bg-sky/15 font-semibold text-beige',
-            )}
-          >
-            <span className={cx('h-[6px] w-[6px] rounded-[2px]', i === active ? 'bg-sky' : 'border border-teal')} />
-            {item}
-          </span>
-        ))}
-        <div className="mt-auto flex items-center gap-[8px] rounded-[8px] bg-white/5 px-[8px] py-[7px]">
-          <span className="grid h-[20px] w-[20px] place-items-center rounded-full bg-teal text-[8px] font-bold text-beige">RK</span>
-          <span className="text-[9.5px] leading-tight text-beige">
-            Principal
-            <br />
-            <span className="text-sky/80">Admin access</span>
-          </span>
-        </div>
-      </aside>
-      <div className="flex min-w-0 flex-col gap-[11px] bg-[#F7F5F2] px-[16px] py-[14px]">{children}</div>
-    </div>
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" className={cx('shrink-0', className)}>
+      <path d={ICON[name]} />
+    </svg>
   )
 }
 
-function Header({ title, sub, right }: { title: string; sub: string; right?: ReactNode }) {
+/* ── shell: top bar + sidebar, exactly the product's layout ── */
+const NAV: [string, keyof typeof ICON][] = [
+  ['Dashboard', 'dashboard'],
+  ['Students', 'students'],
+  ['Teachers', 'teachers'],
+  ['Classes', 'classes'],
+  ['Resources', 'resources'],
+  ['Diary Notes', 'diary'],
+  ['Announcements', 'bell'],
+  ['Holidays', 'calendar'],
+  ['Schedules', 'file'],
+  ['Fees', 'fees'],
+  ['Exams & Results', 'file'],
+  ['Sessions', 'sessions'],
+  ['Promotion', 'promotion'],
+]
+
+function Shell({ active, children }: { active: string; children: ReactNode }) {
   return (
-    <div className="flex items-center justify-between gap-[10px]">
-      <div>
-        <div className="font-display text-[17px] font-bold leading-tight tracking-[-0.02em]">{title}</div>
-        <div className="text-[9.5px] text-teal-ink">{sub}</div>
+    <div className="absolute inset-0 flex flex-col bg-white font-sans text-[10px] leading-[1.4] text-erp-ink">
+      <header className="flex h-[38px] shrink-0 items-center justify-between border-b border-erp-line px-[14px]">
+        <div className="flex items-center gap-[7px]">
+          <span className="grid h-[20px] w-[20px] place-items-center rounded-[5px] bg-erp text-[7.5px] font-bold text-white">SP</span>
+          <span className="text-[12.5px] font-semibold tracking-[-0.01em] text-erp">Sunrise Public School</span>
+        </div>
+        <div className="flex items-center gap-[7px]">
+          <span className="flex h-[22px] items-center gap-[5px] rounded-[6px] border border-erp-line px-[8px] text-[9.5px] font-medium">
+            <Ico name="sessions" size={10} />
+            2026-2027
+            <Ico name="chevron" size={10} className="text-erp-muted" />
+          </span>
+          <span className="grid h-[22px] w-[22px] place-items-center rounded-full bg-erp-soft text-[8.5px] font-semibold">RK</span>
+        </div>
+      </header>
+      <div className="flex min-h-0 flex-1">
+        <aside className="flex w-[132px] shrink-0 flex-col gap-[2px] border-r border-erp-line bg-erp-side p-[6px]">
+          {NAV.map(([label, icon]) => (
+            <span
+              key={label}
+              className={cx('flex h-[22px] items-center gap-[7px] rounded-[5px] px-[8px] text-[9.5px] font-medium', label === active ? 'bg-erp text-white' : 'text-erp-ink')}
+            >
+              <Ico name={icon} size={10.5} />
+              {label}
+            </span>
+          ))}
+        </aside>
+        <main className="flex min-w-0 flex-1 flex-col gap-[10px] overflow-hidden px-[14px] py-[12px]">{children}</main>
       </div>
-      {right}
     </div>
   )
 }
 
-const card = 'rounded-[10px] bg-white shadow-[0_1px_0_rgb(47_65_86/.06),0_0_0_1px_rgb(47_65_86/.04)]'
+function PageHead({ title, right }: { title: string; right?: ReactNode }) {
+  return (
+    <div className="flex h-[26px] shrink-0 items-center justify-between gap-[8px]">
+      <div className="text-[18px] font-bold leading-none tracking-[-0.02em] text-erp">{title}</div>
+      {right && <div className="flex items-center gap-[6px]">{right}</div>}
+    </div>
+  )
+}
 
-function Pill({ children, tone = 'navy' }: { children: ReactNode; tone?: 'navy' | 'sky' | 'line' }) {
+const card = 'rounded-[8px] border border-erp-line bg-white'
+
+function OutlineButton({ icon, children }: { icon?: keyof typeof ICON; children: ReactNode }) {
+  return (
+    <span className="flex h-[22px] items-center gap-[5px] rounded-[6px] border border-erp-line bg-white px-[8px] text-[9px] font-medium">
+      {icon && <Ico name={icon} size={10} />}
+      {children}
+    </span>
+  )
+}
+
+function PrimaryButton({ icon, children }: { icon?: keyof typeof ICON; children: ReactNode }) {
+  return (
+    <span className="flex h-[22px] items-center gap-[5px] rounded-[6px] bg-erp px-[9px] text-[9px] font-semibold text-white">
+      {icon && <Ico name={icon} size={10} />}
+      {children}
+    </span>
+  )
+}
+
+function Select({ children, className }: { children: ReactNode; className?: string }) {
+  return (
+    <span className={cx('flex h-[22px] items-center justify-between gap-[8px] rounded-[6px] border border-erp-line bg-white px-[7px] text-[9px]', className)}>
+      {children}
+      <Ico name="chevron" size={9} className="text-erp-muted" />
+    </span>
+  )
+}
+
+function Stat({ label, value, foot, icon }: { label: string; value: string; foot?: string; icon: keyof typeof ICON }) {
+  return (
+    <div className={cx(card, 'px-[10px] py-[8px]')}>
+      <div className="flex items-center justify-between text-[9px] font-medium">
+        {label}
+        <Ico name={icon} size={10.5} className="text-erp" />
+      </div>
+      <div className="mt-[3px] text-[16px] font-bold leading-none tracking-[-0.02em]">{value}</div>
+      {foot && <div className="mt-[3px] text-[7.5px] text-erp-muted">{foot}</div>}
+    </div>
+  )
+}
+
+type Tone = 'solid' | 'outline' | 'alert' | 'warn'
+function Badge({ tone, children }: { tone: Tone; children: ReactNode }) {
   return (
     <span
       className={cx(
-        'inline-flex items-center rounded-full px-[7px] py-[2px] text-[8.5px] font-semibold',
-        tone === 'navy' && 'bg-navy text-beige',
-        tone === 'sky' && 'bg-sky text-navy',
-        tone === 'line' && 'ring-1 ring-navy/20',
+        'inline-flex items-center rounded-full px-[6px] py-[1.5px] text-[7.5px] font-semibold',
+        tone === 'solid' && 'bg-erp text-white',
+        tone === 'outline' && 'border border-erp-line text-erp-ink',
+        tone === 'alert' && 'bg-[#FEE2E2] text-[#B91C1C]',
+        tone === 'warn' && 'bg-[#FEF3C7] text-[#92400E]',
       )}
     >
       {children}
@@ -77,113 +156,145 @@ function Pill({ children, tone = 'navy' }: { children: ReactNode; tone?: 'navy' 
   )
 }
 
-export function DashboardScreen() {
-  const stats = [
-    ['Collected in Oct', '₹18,42,500', '85% of target'],
-    ['Pending fees', '₹3,12,000', '46 reminders sent'],
-    ['Attendance today', '94.2%', '1,128 of 1,197'],
-    ['New enquiries', '37', 'This week'],
-  ]
-  const bars = [42, 56, 48, 70, 64, 88]
+function Initials({ name }: { name: string }) {
+  const parts = name.split(' ')
   return (
-    <Shell active={0}>
-      <Header
-        title="Good morning, Principal"
-        sub="Friday, 17 October"
-        right={<div className="flex h-[24px] w-[150px] items-center rounded-full bg-white px-[10px] text-[9px] text-[#7E93A3] shadow-[0_0_0_1px_rgb(47_65_86/.06)]">Search students, staff, receipts</div>}
-      />
-      <div className="grid grid-cols-4 gap-[8px]">
-        {stats.map(([label, value, foot]) => (
-          <div key={label} className={cx(card, 'px-[10px] py-[9px]')}>
-            <div className="text-[9px] text-teal-ink">{label}</div>
-            <div className="mt-[2px] font-display text-[16px] font-bold tracking-[-0.02em]">{value}</div>
-            <div className="mt-[1px] text-[8.5px] font-semibold text-teal">{foot}</div>
-          </div>
-        ))}
+    <span className="grid h-[16px] w-[16px] shrink-0 place-items-center rounded-full bg-erp-soft text-[6.5px] font-semibold text-erp">
+      {parts[0][0]}
+      {parts[1]?.[0]}
+    </span>
+  )
+}
+
+/* ── 1. Dashboard: stat cards, attendance by class, announcements ── */
+export function DashboardScreen() {
+  const attendance = [96, 94, 97, 92, 95, 93, 91, 94, 89, 96]
+  return (
+    <Shell active="Dashboard">
+      <PageHead title="Dashboard" right={<OutlineButton icon="refresh">Refresh</OutlineButton>} />
+      <div className="grid shrink-0 grid-cols-3 gap-[8px]">
+        <Stat label="Total Students" value="742" foot="+5.2% from last month" icon="teachers" />
+        <Stat label="Total Teachers" value="33" foot="+2 new this month" icon="students" />
+        <Stat label="Fee Collection" value="₹18.4L" foot="85% of target collected" icon="fees" />
       </div>
-      <div className="grid min-h-0 flex-1 grid-cols-[1.5fr_1fr] gap-[8px]">
-        <div className={cx(card, 'flex flex-col px-[12px] py-[10px]')}>
-          <div className="flex justify-between text-[10px]">
-            <strong>Fee collection</strong>
-            <span className="text-teal-ink">2026–27</span>
-          </div>
-          <div className="flex flex-1 items-end gap-[10px] pt-[10px]">
-            {bars.map((h, i) => (
-              <span key={i} className={cx('flex-1 rounded-[4px]', i === bars.length - 1 ? 'bg-navy' : 'bg-sky')} style={{ height: `${h}%` }} />
-            ))}
-          </div>
-          <div className="mt-[5px] flex gap-[10px] text-[8.5px] text-teal-ink">
-            {['Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'].map((m) => (
-              <span key={m} className="flex-1 text-center">
-                {m}
-              </span>
-            ))}
+      <div className="grid min-h-0 flex-1 grid-cols-[1.3fr_1fr] gap-[8px]">
+        <div className={cx(card, 'flex flex-col px-[11px] py-[9px]')}>
+          <div className="text-[11.5px] font-bold tracking-[-0.01em]">Class Attendance Overview</div>
+          <div className="text-[7.5px] text-erp-muted">Attendance percentage by class for the current academic year</div>
+          <div className="mt-[8px] flex min-h-0 flex-1 gap-[6px]">
+            <div className="flex flex-col justify-between pb-[12px] text-[7px] text-erp-muted">
+              <span>100%</span>
+              <span>95%</span>
+              <span>90%</span>
+              <span>85%</span>
+            </div>
+            <div className="flex flex-1 flex-col">
+              <div className="relative flex flex-1 items-end gap-[5px] border-b border-erp-line">
+                {[0, 1, 2].map((i) => (
+                  <span key={i} className="pointer-events-none absolute inset-x-0 border-t border-dashed border-erp-line" style={{ top: `${(i / 3) * 100}%` }} />
+                ))}
+                {attendance.map((p, i) => (
+                  <span key={i} className="relative flex-1 rounded-t-[3px] bg-erp" style={{ height: `${((p - 85) / 15) * 100}%` }} />
+                ))}
+              </div>
+              <div className="mt-[3px] flex gap-[5px] text-[7px] text-erp-muted">
+                {attendance.map((_, i) => (
+                  <span key={i} className="flex-1 text-center">
+                    {i + 1}
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
-        <div className={cx(card, 'px-[12px] py-[10px] text-[9.5px]')}>
-          <strong className="text-[10px]">Due this week</strong>
-          {[
-            ['Class 9B · 8 students', '₹64,000'],
-            ['Class 6A · 5 students', '₹41,500'],
-            ['Class 11C · 4 students', '₹52,000'],
-            ['Transport · 12 students', '₹30,600'],
-          ].map(([a, b], i) => (
-            <div key={a} className={cx('flex justify-between py-[6px]', i < 3 && 'border-b border-[#EEF2F5]')}>
-              <span>{a}</span>
-              <strong>{b}</strong>
+        <div className={cx(card, 'flex flex-col overflow-hidden px-[11px] py-[9px]')}>
+          <div className="text-[11.5px] font-bold tracking-[-0.01em]">Recent Announcements</div>
+          <div className="text-[7.5px] text-erp-muted">Latest announcements and notices (3 active)</div>
+          <div className="mt-[8px] space-y-[6px]">
+            <div className="rounded-[6px] border border-erp-line px-[8px] py-[6px]">
+              <div className="flex items-center justify-between gap-[6px]">
+                <span className="flex items-center gap-[5px] text-[9.5px] font-semibold">
+                  <Ico name="bell" size={10} />
+                  School Time Change
+                </span>
+                <Badge tone="alert">high</Badge>
+              </div>
+              <p className="mt-[4px] text-[8.5px] leading-[1.5] text-erp-muted">सोमवार से विद्यालय का समय प्रातः 08:30 से दोपहर 02:30 बजे तक रहेगा। मध्यान्तर 11:00 बजे होगा।</p>
+              <div className="mt-[4px] flex items-center gap-[4px] text-[7.5px] text-erp-muted">
+                <Ico name="calendar" size={8.5} />
+                October 17th, 2026
+              </div>
             </div>
-          ))}
+            <div className="rounded-[6px] border border-erp-line px-[8px] py-[6px]">
+              <div className="flex items-center justify-between gap-[6px]">
+                <span className="flex items-center gap-[5px] text-[9.5px] font-semibold">
+                  <Ico name="bell" size={10} />
+                  Parent-Teacher Meeting
+                </span>
+                <Badge tone="warn">medium</Badge>
+              </div>
+              <p className="mt-[4px] text-[8.5px] leading-[1.5] text-erp-muted">Saturday, 25 October, 10 AM to 1 PM, in each class.</p>
+            </div>
+          </div>
         </div>
       </div>
     </Shell>
   )
 }
 
+/* ── 2. Fees: totals, filters and the same table the Students page uses ── */
 export function FeesScreen() {
-  const rows: [string, string, string, 'Paid' | 'Pending' | 'Reminder sent'][] = [
-    ['Riya Mehta', '5A', '₹8,200', 'Paid'],
-    ['Kabir Singh', '9B', '₹12,500', 'Paid'],
-    ['Ananya Rao', '6A', '₹9,800', 'Reminder sent'],
-    ['Arjun Patel', '11C', '₹14,000', 'Pending'],
-    ['Meera Joshi', '7B', '₹8,200', 'Paid'],
-    ['Dev Sharma', '3A', '₹6,500', 'Reminder sent'],
+  const rows: [string, string, string, string, string, string, 'Paid' | 'Partial' | 'Due'][] = [
+    ['101', 'AARAV SHARMA', '5 A', 'RAJESH SHARMA', '₹24,000', '₹24,000', 'Paid'],
+    ['104', 'DIYA MEENA', '5 A', 'MAHESH MEENA', '₹24,000', '₹12,000', 'Partial'],
+    ['108', 'KABIR SINGH', '6 B', 'SURENDRA SINGH', '₹26,500', '₹26,500', 'Paid'],
+    ['112', 'ANANYA RAO', '6 B', 'VENKAT RAO', '₹26,500', '₹0', 'Due'],
+    ['115', 'ISHAAN GUPTA', '7 A', 'ALOK GUPTA', '₹28,000', '₹28,000', 'Paid'],
+    ['119', 'PRIYA CHOUDHARY', '7 A', 'RAMESH CHOUDHARY', '₹28,000', '₹14,000', 'Partial'],
+    ['123', 'ROHAN BHATT', '8 A', 'VIKRAM BHATT', '₹29,500', '₹29,500', 'Paid'],
+    ['127', 'SNEHA KUMAWAT', '8 A', 'GOPAL KUMAWAT', '₹29,500', '₹0', 'Due'],
   ]
+  const cols = 'grid grid-cols-[30px_1.45fr_30px_1.3fr_50px_50px_46px] items-center gap-[6px]'
   return (
-    <Shell active={1}>
-      <Header
-        title="Fees"
-        sub="Term 2 · 2026–27"
-        right={<span className="rounded-full bg-navy px-[12px] py-[6px] text-[9.5px] font-semibold text-beige">Send reminders</span>}
-      />
-      <div className={cx(card, 'px-[12px] py-[10px]')}>
-        <div className="flex items-end justify-between">
-          <div>
-            <div className="text-[9px] text-teal-ink">Collected</div>
-            <div className="font-display text-[18px] font-bold tracking-[-0.02em]">₹18,42,500</div>
-          </div>
-          <div className="text-right">
-            <div className="text-[9px] text-teal-ink">Pending · 46 students</div>
-            <div className="font-display text-[14px] font-bold">₹3,12,000</div>
-          </div>
-        </div>
-        <div className="mt-[8px] h-[7px] overflow-hidden rounded-full bg-sky-soft">
-          <div className="h-full w-[85.5%] rounded-full bg-navy" />
-        </div>
+    <Shell active="Fees">
+      <PageHead title="Fee Management" right={<PrimaryButton icon="plus">Collect Fee</PrimaryButton>} />
+      <div className="grid shrink-0 grid-cols-3 gap-[8px]">
+        <Stat label="Collected this term" value="₹18,42,500" icon="fees" />
+        <Stat label="Pending" value="₹3,12,000" icon="file" />
+        <Stat label="Students with dues" value="46" icon="teachers" />
       </div>
-      <div className={cx(card, 'min-h-0 flex-1 overflow-hidden px-[12px] py-[6px]')}>
-        <div className="grid grid-cols-[1.6fr_.6fr_.9fr_1fr] border-b border-[#EEF2F5] py-[6px] text-[8.5px] font-semibold uppercase tracking-[.06em] text-teal-ink">
-          <span>Student</span>
+      <div className="flex shrink-0 items-center gap-[6px]">
+        <span className="flex h-[22px] flex-1 items-center gap-[5px] rounded-[6px] border border-erp-line px-[7px] text-[9px] text-erp-muted">
+          <Ico name="search" size={10} />
+          Search by name, father name
+        </span>
+        <Select className="w-[58px]">Class</Select>
+        <Select className="w-[62px]">Section</Select>
+        <Select className="w-[56px]">Status</Select>
+      </div>
+      <div className={cx(card, 'min-h-0 flex-1 overflow-hidden')}>
+        <div className={cx(cols, 'border-b border-erp-line px-[10px] py-[6px] text-[8px] font-medium text-erp-muted')}>
+          <span>ID</span>
+          <span>Name</span>
           <span>Class</span>
-          <span>Due</span>
+          <span>Father&apos;s Name</span>
+          <span>Total</span>
+          <span>Paid</span>
           <span>Status</span>
         </div>
-        {rows.map(([name, cls, amt, status]) => (
-          <div key={name} className="grid grid-cols-[1.6fr_.6fr_.9fr_1fr] items-center border-b border-[#F1F4F6] py-[5.5px] text-[9.5px] last:border-0">
-            <span className="font-semibold">{name}</span>
+        {rows.map(([id, name, cls, father, total, paid, status]) => (
+          <div key={id} className={cx(cols, 'border-b border-erp-line px-[10px] py-[5px] text-[8.5px] last:border-0')}>
+            <span className="font-semibold">{id}</span>
+            <span className="flex min-w-0 items-center gap-[5px]">
+              <Initials name={name} />
+              <span className="truncate">{name}</span>
+            </span>
             <span>{cls}</span>
-            <span>{amt}</span>
+            <span className="truncate">{father}</span>
+            <span>{total}</span>
+            <span>{paid}</span>
             <span>
-              <Pill tone={status === 'Paid' ? 'navy' : status === 'Pending' ? 'line' : 'sky'}>{status}</Pill>
+              <Badge tone={status === 'Paid' ? 'solid' : status === 'Due' ? 'alert' : 'outline'}>{status}</Badge>
             </span>
           </div>
         ))}
@@ -192,77 +303,65 @@ export function FeesScreen() {
   )
 }
 
+/* ── 3. Attendance: today, class by class, as teachers mark it ── */
 export function AttendanceScreen() {
-  const classes = [
-    ['6A', 38, 40],
-    ['6B', 37, 39],
-    ['7A', 40, 41],
-    ['7B', 38, 40],
-    ['8A', 35, 38],
-    ['8B', 39, 40],
-    ['9A', 36, 39],
-    ['9B', 38, 41],
-    ['10A', 40, 40],
-  ] as const
-  const r = 34
-  const c = 2 * Math.PI * r
+  const rows: [string, string, number, number, string | null][] = [
+    ['6 A', 'Ms. Kavita Jain', 38, 40, '9:02 AM'],
+    ['6 B', 'Mr. Anil Verma', 37, 39, '9:05 AM'],
+    ['7 A', 'Ms. Neha Bansal', 40, 41, '9:01 AM'],
+    ['7 B', 'Mr. Sunil Yadav', 36, 40, '9:10 AM'],
+    ['8 A', 'Ms. Pooja Arora', 35, 38, '9:04 AM'],
+    ['8 B', 'Mr. Deepak Saini', 0, 40, null],
+    ['9 A', 'Ms. Ritu Sharma', 39, 41, '9:03 AM'],
+    ['9 B', 'Mr. Manoj Tiwari', 37, 40, '9:08 AM'],
+  ]
+  const cols = 'grid grid-cols-[34px_1.2fr_58px_1.4fr_62px] items-center gap-[8px]'
   return (
-    <Shell active={2}>
-      <Header title="Attendance" sub="Today · marked by 9:12 AM" right={<Pill tone="sky">1,128 of 1,197 present</Pill>} />
-      <div className="grid min-h-0 flex-1 grid-cols-[170px_1fr] gap-[8px]">
-        <div className={cx(card, 'flex flex-col items-center justify-center gap-[10px] px-[10px] py-[12px]')}>
-          <div className="relative h-[92px] w-[92px]">
-            <svg viewBox="0 0 80 80" className="h-full w-full -rotate-90">
-              <circle cx="40" cy="40" r={r} fill="none" stroke="#E3ECF2" strokeWidth="9" />
-              <circle cx="40" cy="40" r={r} fill="none" stroke="#2F4156" strokeWidth="9" strokeLinecap="round" strokeDasharray={`${c * 0.942} ${c}`} />
-            </svg>
-            <div className="absolute inset-0 grid place-items-center text-center">
-              <div>
-                <div className="font-display text-[17px] font-bold">94.2%</div>
-                <div className="text-[8px] text-teal-ink">present</div>
-              </div>
-            </div>
-          </div>
-          <div className="w-full space-y-[4px] text-[9px]">
-            {[
-              ['Present', '1,128', 'bg-navy'],
-              ['Absent', '52', 'bg-teal'],
-              ['On leave', '17', 'bg-sky'],
-            ].map(([l, v, dot]) => (
-              <div key={l} className="flex items-center justify-between">
-                <span className="flex items-center gap-[5px]">
-                  <span className={cx('h-[7px] w-[7px] rounded-[2px]', dot)} />
-                  {l}
+    <Shell active="Classes">
+      <PageHead
+        title="Class Attendance"
+        right={
+          <OutlineButton icon="calendar">
+            Today · 18 Oct
+          </OutlineButton>
+        }
+      />
+      <div className="grid shrink-0 grid-cols-3 gap-[8px]">
+        <Stat label="Present" value="1,128" foot="94.2% of 1,197 students" icon="check" />
+        <Stat label="Absent" value="52" foot="4.3% of students" icon="teachers" />
+        <Stat label="On leave" value="17" foot="1.4% of students" icon="calendar" />
+      </div>
+      <div className={cx(card, 'min-h-0 flex-1 overflow-hidden')}>
+        <div className={cx(cols, 'border-b border-erp-line px-[10px] py-[6px] text-[8px] font-medium text-erp-muted')}>
+          <span>Class</span>
+          <span>Class Teacher</span>
+          <span>Present</span>
+          <span>Attendance</span>
+          <span>Marked</span>
+        </div>
+        {rows.map(([cls, teacher, present, total, at]) => {
+          const pct = Math.round((present / total) * 100)
+          return (
+            <div key={cls} className={cx(cols, 'border-b border-erp-line px-[10px] py-[6.5px] text-[8.5px] last:border-0')}>
+              <span className="font-semibold">{cls}</span>
+              <span className="truncate">{teacher}</span>
+              <span>{at ? `${present} / ${total}` : `— / ${total}`}</span>
+              <span className="flex items-center gap-[6px]">
+                <span className="h-[5px] flex-1 overflow-hidden rounded-full bg-erp-soft">
+                  {at && <span className="block h-full rounded-full bg-erp" style={{ width: `${pct}%` }} />}
                 </span>
-                <strong>{v}</strong>
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="grid grid-cols-3 gap-[7px]">
-          {classes.map(([name, p, t]) => (
-            <div key={name} className={cx(card, 'flex flex-col justify-between px-[9px] py-[8px]')}>
-              <div className="flex items-baseline justify-between">
-                <strong className="font-display text-[13px]">{name}</strong>
-                <span className="text-[9px] text-teal-ink">{Math.round((p / t) * 100)}%</span>
-              </div>
-              <div>
-                <div className="h-[5px] overflow-hidden rounded-full bg-sky-soft">
-                  <div className="h-full rounded-full bg-navy" style={{ width: `${(p / t) * 100}%` }} />
-                </div>
-                <div className="mt-[5px] flex justify-between text-[8.5px] text-teal-ink">
-                  <span>{p} present</span>
-                  <span>{t - p === 0 ? 'Full' : `${t - p} absent`}</span>
-                </div>
-              </div>
+                <span className="w-[22px] text-right text-erp-muted">{at ? `${pct}%` : ''}</span>
+              </span>
+              <span>{at ? <Badge tone="solid">{at}</Badge> : <Badge tone="outline">Pending</Badge>}</span>
             </div>
-          ))}
-        </div>
+          )
+        })}
       </div>
     </Shell>
   )
 }
 
+/* ── 4. Schedules: the week's timetable, clashes resolved ── */
 export function TimetableScreen() {
   const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
   const plan = [
@@ -273,55 +372,60 @@ export function TimetableScreen() {
     ['Social', 'SUB', 'Hindi', 'Hindi', 'English', 'Sports'],
     ['Computer', 'Sports', 'Social', 'Art', 'Computer', ''],
   ]
-  const tone: Record<string, string> = {
-    Maths: 'bg-navy text-beige',
-    Science: 'bg-teal text-white',
-    English: 'bg-sky text-navy',
-    Hindi: 'bg-[#E9DFD7] text-navy',
-    Social: 'bg-white text-navy ring-1 ring-navy/10',
-    Computer: 'bg-sky-soft text-navy',
-    Sports: 'bg-[#DDE6D9] text-navy',
-    Art: 'bg-[#EFE4D2] text-navy',
+  const teacher: Record<string, string> = {
+    Maths: 'Mr. Verma',
+    English: 'Ms. Jain',
+    Science: 'Ms. Bansal',
+    Hindi: 'Mr. Yadav',
+    Social: 'Ms. Arora',
+    Computer: 'Mr. Saini',
+    Sports: 'Mr. Khan',
+    Art: 'Ms. Das',
   }
   return (
-    <Shell active={3}>
-      <Header
-        title="Timetable"
-        sub="Class 7B · Week 42"
-        right={<span className="rounded-full bg-navy px-[12px] py-[6px] text-[9.5px] font-semibold text-beige">Auto-arrange</span>}
+    <Shell active="Schedules">
+      <PageHead
+        title="Schedules"
+        right={
+          <>
+            <Select className="w-[70px]">Class 7 B</Select>
+            <PrimaryButton icon="refresh">Auto-arrange</PrimaryButton>
+          </>
+        }
       />
-      <div className={cx(card, 'min-h-0 flex-1 px-[10px] py-[8px]')}>
-        <div className="grid grid-cols-[34px_repeat(6,minmax(0,1fr))] gap-[4px] text-[8.5px]">
+      <div className={cx(card, 'min-h-0 flex-1 px-[9px] py-[8px]')}>
+        <div className="grid grid-cols-[22px_repeat(6,minmax(0,1fr))] gap-[4px] text-[8px]">
           <span />
           {days.map((d) => (
-            <span key={d} className="pb-[2px] text-center font-semibold text-teal-ink">
+            <span key={d} className="pb-[1px] text-center font-medium text-erp-muted">
               {d}
             </span>
           ))}
           {plan.map((row, r) => [
-            <span key={`p${r}`} className="flex items-center text-teal-ink">
+            <span key={`p${r}`} className="flex items-center text-erp-muted">
               P{r + 1}
             </span>,
             ...row.map((subj, d) =>
               subj === 'SUB' ? (
-                <span key={`${r}-${d}`} className="flex h-[38px] flex-col justify-center rounded-[6px] border border-dashed border-teal bg-sky-soft px-[5px] leading-tight text-navy">
-                  <strong className="text-[8.5px]">Science</strong>
-                  <span className="text-[7.5px]">Sub: Ms. Iyer</span>
+                <span key={`${r}-${d}`} className="flex h-[40px] flex-col justify-center rounded-[5px] border border-dashed border-erp bg-[#FEF2F2] px-[5px] leading-tight">
+                  <strong className="text-[8px] font-semibold text-erp">Science</strong>
+                  <span className="text-[7px] text-erp-muted">Sub: Ms. Iyer</span>
                 </span>
               ) : subj ? (
-                <span key={`${r}-${d}`} className={cx('flex h-[38px] items-center rounded-[6px] px-[6px] font-semibold', tone[subj])}>
-                  {subj}
+                <span key={`${r}-${d}`} className="flex h-[40px] flex-col justify-center rounded-[5px] border border-erp-line bg-[#FAFAF9] px-[5px] leading-tight">
+                  <strong className="text-[8px] font-semibold">{subj}</strong>
+                  <span className="text-[7px] text-erp-muted">{teacher[subj]}</span>
                 </span>
               ) : (
-                <span key={`${r}-${d}`} className="h-[38px] rounded-[6px] border border-dashed border-navy/10" />
+                <span key={`${r}-${d}`} className="h-[40px] rounded-[5px] border border-dashed border-erp-line" />
               ),
             ),
           ])}
         </div>
       </div>
-      <div className="flex items-center gap-[6px] text-[9.5px] font-semibold text-teal">
-        <span className="grid h-[14px] w-[14px] place-items-center rounded-full bg-teal text-white">
-          <Check size={9} strokeWidth={3} />
+      <div className="flex shrink-0 items-center gap-[6px] text-[8.5px] font-medium text-erp-muted">
+        <span className="grid h-[13px] w-[13px] place-items-center rounded-full bg-erp text-white">
+          <Ico name="check" size={8} />
         </span>
         No clashes this week · 1 substitution arranged
       </div>

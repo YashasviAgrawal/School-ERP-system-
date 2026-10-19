@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { Drag } from '@/components/ui/Icons'
 import { Reveal } from '@/components/ui/Reveal'
+import { SectionHeader } from '@/components/ui/SectionHeader'
 
 /**
  * Drag-to-compare. Swap the two mock sites for real screenshots of a school you
@@ -13,17 +14,19 @@ export function BeforeAfter() {
   const [pos, setPos] = useState(46)
 
   return (
-    <section id="work" data-theme="light" aria-labelledby="work-title" className="py-24 md:py-36">
+    <section id="work" data-theme="light" aria-labelledby="work-title" className="section bg-canvas">
       <div className="container-x">
-        <Reveal className="flex flex-wrap items-end justify-between gap-x-12 gap-y-6">
-          <h2 id="work-title" className="h-section max-w-[860px]">
-            From forgettable to first choice.
-          </h2>
-          <p className="max-w-[30ch] text-[18px] leading-[1.55] text-teal-ink">Drag across to see a school website before and after our redesign.</p>
+        <Reveal>
+          <SectionHeader
+            id="work-title"
+            label="Our work"
+            title="From forgettable to first choice."
+            description="Drag across to see a school website before and after our redesign."
+          />
         </Reveal>
 
-        <Reveal className="mt-12 md:mt-14">
-          <div className="@container relative aspect-[4/5] overflow-hidden rounded-[28px] bg-white shadow-[0_2px_6px_rgb(47_65_86/.06),0_60px_100px_-60px_rgb(47_65_86/.6)] ring-1 ring-navy/[.07] md:aspect-[16/9]">
+        <Reveal className="mt-12">
+          <div className="@container relative aspect-[4/5] overflow-hidden rounded-[var(--radius-frame)] bg-white shadow-[0_2px_6px_rgb(14_37_78/.05),0_40px_80px_-48px_rgb(14_37_78/.45)] ring-1 ring-ink/[.08] md:aspect-[16/9]">
             <div className="absolute inset-0">
               <NewSite />
             </div>
@@ -31,7 +34,7 @@ export function BeforeAfter() {
               <OldSite />
             </div>
 
-            <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 z-10 w-[3px] -translate-x-1/2 bg-white shadow-[0_0_0_1px_rgb(47_65_86/.15)]" style={{ left: `${pos}%` }} />
+            <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 z-10 w-[3px] -translate-x-1/2 bg-white shadow-[0_0_0_1px_rgb(14_37_78/.15)]" style={{ left: `${pos}%` }} />
             <input
               type="range"
               min={0}
@@ -44,13 +47,13 @@ export function BeforeAfter() {
             />
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute top-1/2 z-30 grid h-16 w-16 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-navy text-beige shadow-[0_16px_34px_-12px_rgb(47_65_86/.75)] transition-shadow peer-focus-visible:ring-4 peer-focus-visible:ring-sky peer-focus-visible:ring-offset-2 peer-focus-visible:ring-offset-navy"
+              className="pointer-events-none absolute top-1/2 z-30 grid h-14 w-14 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-brand text-white shadow-[0_16px_34px_-12px_rgb(14_37_78/.75)] transition-shadow peer-focus-visible:ring-4 peer-focus-visible:ring-brand-mid peer-focus-visible:ring-offset-2 peer-focus-visible:ring-offset-brand"
               style={{ left: `${pos}%` }}
             >
               <Drag size={24} />
             </div>
-            <span className="pointer-events-none absolute bottom-4 left-4 z-30 rounded-full bg-navy/90 px-3.5 py-1.5 text-[13px] font-semibold text-beige md:bottom-5 md:left-5">Before</span>
-            <span className="pointer-events-none absolute bottom-4 right-4 z-30 rounded-full bg-white px-3.5 py-1.5 text-[13px] font-semibold text-navy shadow-[0_6px_16px_-8px_rgb(47_65_86/.5)] md:bottom-5 md:right-5">
+            <span className="pointer-events-none absolute bottom-4 left-4 z-30 rounded-lg bg-ink/85 px-3 py-1.5 text-[13px] font-semibold text-white md:bottom-5 md:left-5">Before</span>
+            <span className="pointer-events-none absolute bottom-4 right-4 z-30 rounded-lg bg-white px-3 py-1.5 text-[13px] font-semibold text-ink shadow-[0_6px_16px_-8px_rgb(14_37_78/.5)] md:bottom-5 md:right-5">
               After
             </span>
           </div>
@@ -111,34 +114,34 @@ function OldSite() {
 
 function NewSite() {
   return (
-    <div aria-hidden="true" className="absolute inset-0 bg-paper text-[3.3cqw] leading-[1.35] text-[#1E2F42] md:text-[1.1cqw]">
+    <div aria-hidden="true" className="absolute inset-0 bg-paper text-[3.3cqw] leading-[1.35] text-ink md:text-[1.1cqw]">
       <div className="flex items-center justify-between px-[1.6em] py-[1.4em] md:px-[3.2em] md:py-[1.8em]">
         <div className="flex items-center gap-[.7em]">
-          <span className="grid h-[2.5em] w-[2.5em] place-items-center rounded-full bg-navy text-[.85em] font-bold text-beige">SP</span>
+          <span className="grid h-[2.5em] w-[2.5em] place-items-center rounded-full bg-brand text-[.85em] font-bold text-white">SP</span>
           <strong className="text-[1.05em]">Sunrise Public School</strong>
         </div>
         <div className="hidden items-center gap-[2.2em] text-[.95em] md:flex">
           <span>About</span>
           <span>Academics</span>
           <span>Life at Sunrise</span>
-          <span className="rounded-full bg-navy px-[1.4em] py-[.7em] font-semibold text-beige">Admissions 2027–28</span>
+          <span className="rounded-full bg-brand px-[1.4em] py-[.7em] font-semibold text-white">Admissions 2027–28</span>
         </div>
-        <span className="h-[.9em] w-[1.6em] border-y-2 border-navy md:hidden" />
+        <span className="h-[.9em] w-[1.6em] border-y-2 border-ink md:hidden" />
       </div>
       <div className="grid items-center gap-[1.6em] px-[1.6em] md:grid-cols-[1fr_1.1fr] md:gap-[3em] md:px-[3.2em] md:py-[1.4em]">
         <div>
-          <span className="inline-block rounded-full bg-sky px-[1em] py-[.4em] text-[.85em] font-semibold">CBSE · Nursery to XII · Jaipur</span>
+          <span className="inline-block rounded-full bg-brand-light px-[1em] py-[.4em] text-[.85em] font-semibold">CBSE · Nursery to XII · Jaipur</span>
           <div className="mt-[.5em] font-display text-[2.9em] font-extrabold leading-[0.94] tracking-[-0.045em] md:text-[4.6em]">Where curious minds grow.</div>
-          <p className="mt-[.9em] max-w-[28em] text-[1.05em] text-teal-ink md:text-[1.15em]">A school where every child is known by name, and every day starts with a question.</p>
+          <p className="mt-[.9em] max-w-[28em] text-[1.05em] text-muted md:text-[1.15em]">A school where every child is known by name, and every day starts with a question.</p>
           <div className="mt-[1.4em] flex flex-wrap gap-[.7em]">
-            <span className="rounded-full bg-navy px-[1.7em] py-[.85em] font-semibold text-beige">Book a campus visit</span>
-            <span className="rounded-full px-[1.7em] py-[.85em] font-semibold shadow-[inset_0_0_0_1.5px_rgb(47_65_86/.3)]">Fee structure</span>
+            <span className="rounded-full bg-brand px-[1.7em] py-[.85em] font-semibold text-white">Book a campus visit</span>
+            <span className="rounded-full px-[1.7em] py-[.85em] font-semibold shadow-[inset_0_0_0_1.5px_rgb(14_37_78/.3)]">Fee structure</span>
           </div>
         </div>
-        <div className="relative aspect-[4/3] overflow-hidden rounded-[1.4em] bg-sky md:order-first md:aspect-[4/3.3]">
-          <span className="absolute -inset-x-[15%] -bottom-[35%] h-[70%] rounded-[50%] bg-teal" />
-          <span className="absolute -bottom-[48%] -right-[30%] left-[30%] h-[70%] rounded-[50%] bg-navy" />
-          <span className="absolute right-[16%] top-[14%] h-[4.5em] w-[4.5em] rounded-full bg-beige" />
+        <div className="relative aspect-[4/3] overflow-hidden rounded-[1.4em] bg-brand-light md:order-first md:aspect-[4/3.3]">
+          <span className="absolute -inset-x-[15%] -bottom-[35%] h-[70%] rounded-[50%] bg-brand-mid" />
+          <span className="absolute -bottom-[48%] -right-[30%] left-[30%] h-[70%] rounded-[50%] bg-brand" />
+          <span className="absolute right-[16%] top-[14%] h-[4.5em] w-[4.5em] rounded-full bg-white" />
           <span className="absolute left-[1em] top-[1em] rounded-full bg-white/85 px-[.9em] py-[.45em] text-[.8em] font-semibold">[Campus photo]</span>
         </div>
       </div>

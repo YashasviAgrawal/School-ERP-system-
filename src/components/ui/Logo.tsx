@@ -1,17 +1,17 @@
 import { site } from '@/lib/site'
 import { cx } from '@/lib/cx'
 
-type Tone = 'navy' | 'light' | 'dark' | 'emboss'
+type Tone = 'brand' | 'light' | 'dark' | 'emboss'
 
 const TONES: Record<Tone, { tile: string; stroke: string; dot: string }> = {
-  navy: { tile: '#2F4156', stroke: '#C8D9E6', dot: '#F5EFEB' },
-  light: { tile: '#F5EFEB', stroke: '#567C8D', dot: '#2F4156' },
-  dark: { tile: '#2F4156', stroke: '#C8D9E6', dot: '#F5EFEB' },
-  emboss: { tile: 'rgba(47,65,86,0.07)', stroke: 'rgba(255,255,255,0.75)', dot: 'rgba(255,255,255,0.75)' },
+  brand: { tile: '#102C5E', stroke: '#B4C6DE', dot: '#FFFFFF' },
+  light: { tile: '#FFFFFF', stroke: '#4A6390', dot: '#102C5E' },
+  dark: { tile: '#102C5E', stroke: '#B4C6DE', dot: '#FFFFFF' },
+  emboss: { tile: 'rgba(14,37,78,0.07)', stroke: 'rgba(255,255,255,0.75)', dot: 'rgba(255,255,255,0.75)' },
 }
 
 /** The mark: a rising stroke, like a student's underline turning into a growth curve. */
-export function LogoMark({ size = 34, tone = 'navy', className }: { size?: number; tone?: Tone; className?: string }) {
+export function LogoMark({ size = 34, tone = 'brand', className }: { size?: number; tone?: Tone; className?: string }) {
   const t = TONES[tone]
   return (
     <svg width={size} height={size} viewBox="0 0 34 34" aria-hidden="true" className={className}>
@@ -22,11 +22,11 @@ export function LogoMark({ size = 34, tone = 'navy', className }: { size?: numbe
   )
 }
 
-export function Logo({ tone = 'navy', className }: { tone?: 'navy' | 'light'; className?: string }) {
+export function Logo({ tone = 'brand', className }: { tone?: 'brand' | 'light'; className?: string }) {
   return (
     <span className={cx('inline-flex items-center gap-2.5', className)}>
-      <LogoMark tone={tone === 'light' ? 'light' : 'navy'} />
-      <span className="font-display text-[21px] font-extrabold tracking-[-0.035em]">{site.name}</span>
+      <LogoMark tone={tone === 'light' ? 'light' : 'brand'} />
+      <span className="font-display text-[20px] font-bold tracking-[-0.02em]">{site.name}</span>
     </span>
   )
 }

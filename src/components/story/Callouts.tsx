@@ -27,21 +27,21 @@ export function CalloutItem({
       ref={ref}
       data-active={active}
       className={cx(
-        'group relative rounded-[22px] px-6 py-5 ring-1 ring-sky/20 transition-[background-color,box-shadow] duration-500',
-        'data-[active=true]:bg-sky/[.13] data-[active=true]:ring-sky/50',
+        'group relative rounded-2xl px-6 py-5 ring-1 ring-brand-light/20 transition-[background-color,box-shadow] duration-500',
+        'data-[active=true]:bg-brand-light/[.1] data-[active=true]:ring-brand-light/50',
         className,
       )}
     >
       <div className="flex items-baseline gap-4">
-        <span className="font-display text-[13px] font-bold tracking-[.06em] text-sky">0{index + 1}</span>
+        <span className="font-display text-[13px] font-semibold tracking-[.06em] text-brand-light">0{index + 1}</span>
         <div>
-          <h3 className="text-[22px] font-bold leading-[1.15] tracking-[-0.02em] text-beige">{c.title}</h3>
-          <p className="mt-1.5 text-[15px] leading-[1.5] text-sky">{c.line}</p>
+          <h3 className="text-[18px] leading-[1.3] text-white">{c.title}</h3>
+          <p className="mt-1.5 text-[15px] leading-[1.55] text-brand-light">{c.line}</p>
         </div>
       </div>
       <span
         aria-hidden="true"
-        className="absolute bottom-5 left-0 top-5 w-[3px] origin-top scale-y-0 rounded-full bg-sky transition-transform duration-700 ease-out-expo group-data-[active=true]:scale-y-100"
+        className="absolute bottom-5 left-0 top-5 w-[3px] origin-top scale-y-0 rounded-full bg-brand-light transition-transform duration-700 ease-out-expo group-data-[active=true]:scale-y-100"
       />
     </Comp>
   )

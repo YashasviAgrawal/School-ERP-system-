@@ -5,6 +5,7 @@ import { Laptop, LAPTOP } from '@/components/devices/Laptop'
 import { ErpScreens } from '@/components/devices/ErpScreens'
 import { Phone, StudentAppGreenwood, TeacherAppAravali, TeacherAppSunrise } from '@/components/devices/Phone'
 import { Check, Rupee, TrendUp } from '@/components/ui/Icons'
+import { SectionHeader } from '@/components/ui/SectionHeader'
 import { useSceneProgress } from '@/hooks/useSceneProgress'
 import { PINNED_STORY_QUERY, useMediaQuery } from '@/hooks/useMediaQuery'
 import { clamp, easeInOut, easeOut, mix, seg } from '@/lib/anim'
@@ -47,8 +48,8 @@ export function Stage() {
   const enabled = useMediaQuery(PINNED_STORY_QUERY)
 
   const section = useRef<HTMLElement>(null)
-  const navyBg = useRef<HTMLDivElement>(null)
-  const skyBg = useRef<HTMLDivElement>(null)
+  const darkBg = useRef<HTMLDivElement>(null)
+  const lightBg = useRef<HTMLDivElement>(null)
   const disc = useRef<HTMLDivElement>(null)
   const hero = useRef<HTMLDivElement>(null)
   const chips = useRef<HTMLDivElement>(null)
@@ -88,12 +89,12 @@ export function Stage() {
       if (body.current) body.current.style.transform = `rotateX(${pose.rx}deg) rotateY(${pose.ry}deg)`
       if (lid.current) lid.current.style.transform = `translateY(-1px) rotateX(${mix(LID_CLOSED, LID_OPEN, easeInOut(seg(p, 0.1, 0.29)))}deg)`
 
-      // stage lighting: an iris of navy opens from the laptop (lights dim, screen glows),
-      // then sky blue opens from the phones. Clip-path keeps colours clean, no muddy cross-fade.
+      // stage lighting: an iris of deep navy opens from the laptop (lights dim, screen glows),
+      // then pale blue opens from the phones. Clip-path keeps colours clean, no muddy cross-fade.
       const nv = easeInOut(seg(p, 0.12, 0.24))
       const sk = easeInOut(seg(p, 0.79, 0.9))
-      if (navyBg.current) navyBg.current.style.clipPath = `circle(${nv * 125}% at 50% 66%)`
-      if (skyBg.current) skyBg.current.style.clipPath = `circle(${sk * 150}% at 71% 96%)`
+      if (darkBg.current) darkBg.current.style.clipPath = `circle(${nv * 125}% at 50% 66%)`
+      if (lightBg.current) lightBg.current.style.clipPath = `circle(${sk * 150}% at 71% 96%)`
       const nextTheme = nv > 0.5 && sk < 0.5 ? 'dark' : 'light'
       if (nextTheme !== theme.current && section.current) {
         theme.current = nextTheme
@@ -179,13 +180,13 @@ export function Stage() {
       <span data-anchor="erp" data-anchor-offset="0" aria-hidden="true" className="pointer-events-none absolute left-0 h-px w-px" style={{ top: '160vh' }} />
 
       <div className="sticky top-0 h-svh overflow-hidden">
-        <div ref={navyBg} className="absolute inset-0 bg-navy" style={{ clipPath: 'circle(0% at 50% 66%)' }} />
-        <div ref={skyBg} className="absolute inset-0 bg-sky" style={{ clipPath: 'circle(0% at 71% 96%)' }} />
+        <div ref={darkBg} className="absolute inset-0 bg-brand-deep" style={{ clipPath: 'circle(0% at 50% 66%)' }} />
+        <div ref={lightBg} className="absolute inset-0 bg-canvas" style={{ clipPath: 'circle(0% at 71% 96%)' }} />
         {/* stage disc behind the hero laptop */}
         <div
           ref={disc}
           aria-hidden="true"
-          className="absolute rounded-full bg-sky"
+          className="absolute rounded-full bg-brand"
           style={{ width: 'min(42vw, 72vh)', height: 'min(42vw, 72vh)', left: '71vw', top: '53%', translate: '-50% -50%' }}
         />
 
@@ -197,12 +198,16 @@ export function Stage() {
         </div>
 
         {/* headline over the opening laptop */}
-        <div ref={head1} className="absolute inset-x-0 top-[12vh] z-20 text-center" style={{ opacity: 0 }}>
-          <p className="eyebrow bg-sky/15 text-sky">The ERP</p>
-          <h2 className="mt-5 font-display text-[clamp(2.8rem,5vw,4.9rem)] font-extrabold leading-[0.98] tracking-[-0.042em] text-beige">
-            Your whole school. One screen.
-          </h2>
-          <p className="mx-auto mt-4 max-w-[52ch] text-balance text-[18px] text-sky">Fees, attendance, timetables and teachers, run from one place your office already understands.</p>
+        <div ref={head1} className="absolute inset-x-0 top-[12vh] z-20" style={{ opacity: 0 }}>
+          <div className="container-x">
+            <SectionHeader
+              tone="dark"
+              label="The ERP"
+              title="Your whole school. One screen."
+              description="Fees, attendance, timetables and teachers, run from one place your office already understands."
+              className="max-w-[860px]"
+            />
+          </div>
         </div>
 
         {/* the laptop */}
@@ -234,7 +239,7 @@ export function Stage() {
           <NotificationChip
             className="float-y absolute right-[4vw] top-[47vh]"
             style={{ animationDelay: '-2.4s' }}
-            tone="navy"
+            tone="brand"
             icon={<Check size={18} strokeWidth={2.4} />}
             title="Attendance marked"
             sub="Class 7B · 38 of 40"
@@ -242,7 +247,7 @@ export function Stage() {
           <NotificationChip
             className="float-y absolute left-[57vw] top-[73vh]"
             style={{ animationDelay: '-4.6s' }}
-            tone="beige"
+            tone="canvas"
             icon={<TrendUp size={18} />}
             title="New admission enquiry"
             sub="Nursery · from Google"
@@ -264,11 +269,10 @@ export function Stage() {
         </ol>
 
         {/* headline over the apps */}
-        <div ref={head2} className="absolute inset-x-0 top-[11vh] z-20 text-center" style={{ opacity: 0 }}>
-          <h2 className="font-display text-[clamp(2.8rem,5vw,4.9rem)] font-extrabold leading-[0.98] tracking-[-0.042em] text-navy">
-            In every teacher&apos;s pocket.
-          </h2>
-          <p className="mx-auto mt-4 max-w-[52ch] text-balance text-[18px] text-navy/80">Teacher and student apps, branded with your school&apos;s name.</p>
+        <div ref={head2} className="absolute inset-x-0 top-[11vh] z-20" style={{ opacity: 0 }}>
+          <div className="container-x">
+            <SectionHeader label="Mobile apps" title="In every teacher’s pocket." description="Teacher and student apps, branded with your school’s name." />
+          </div>
         </div>
 
         {/* phones */}

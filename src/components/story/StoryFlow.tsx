@@ -7,6 +7,7 @@ import { Phone, StudentAppGreenwood, TeacherAppAravali, TeacherAppSunrise } from
 import { FitScale } from '@/components/ui/FitScale'
 import { Check, Rupee } from '@/components/ui/Icons'
 import { Reveal } from '@/components/ui/Reveal'
+import { SectionHeader } from '@/components/ui/SectionHeader'
 import { useInView } from '@/hooks/useInView'
 import { prefersReducedMotion } from '@/hooks/useMediaQuery'
 import { CalloutItem, CALLOUTS } from './Callouts'
@@ -20,7 +21,7 @@ export function StoryFlow() {
         <div className="container-x grid items-center gap-14 md:grid-cols-[1.05fr_1fr]">
           <HeroCopy />
           <div className="relative py-8">
-            <div aria-hidden="true" className="absolute left-1/2 top-1/2 aspect-square w-[78%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-sky" />
+            <div aria-hidden="true" className="absolute left-1/2 top-1/2 aspect-square w-[78%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand" />
             <FitScale width={CLOSED_VIEW.w} height={CLOSED_VIEW.h} max={0.62}>
               <ClosedLaptop />
             </FitScale>
@@ -28,7 +29,7 @@ export function StoryFlow() {
             <NotificationChip
               className="float-y absolute bottom-0 right-0 origin-bottom-right scale-[.86] md:scale-100"
               style={{ animationDelay: '-3s' }}
-              tone="navy"
+              tone="brand"
               icon={<Check size={18} strokeWidth={2.4} />}
               title="Attendance marked"
               sub="Class 7B · 38 of 40"
@@ -37,17 +38,18 @@ export function StoryFlow() {
         </div>
       </section>
 
-      <section id="erp" data-anchor="erp" data-theme="dark" className="relative overflow-hidden bg-navy py-24 text-beige md:py-32">
+      <section id="erp" data-anchor="erp" data-theme="dark" className="section relative overflow-hidden bg-brand-deep text-white">
         <div className="container-x">
-          <Reveal className="max-w-[720px] md:mx-auto md:text-center">
-            <p className="eyebrow bg-sky/15 text-sky">The ERP</p>
-            <h2 className="h-section mt-5 text-beige">Your whole school. One screen.</h2>
-            <p className="mt-5 text-[18px] text-sky md:mx-auto md:max-w-[46ch]">
-              Fees, attendance, timetables and teachers, run from one place your office already understands.
-            </p>
+          <Reveal>
+            <SectionHeader
+              tone="dark"
+              label="The ERP"
+              title="Your whole school. One screen."
+              description="Fees, attendance, timetables and teachers, run from one place your office already understands."
+            />
           </Reveal>
           <LaptopReveal />
-          <ol className="mx-auto mt-6 grid max-w-[1000px] gap-3 md:grid-cols-3">
+          <ol className="mt-8 grid gap-4 md:grid-cols-3">
             {CALLOUTS.map((_, i) => (
               <Reveal as="li" key={i} delay={i * 90}>
                 <CalloutItem as="div" index={i} active={i === 0} className="h-full" />
@@ -57,11 +59,10 @@ export function StoryFlow() {
         </div>
       </section>
 
-      <section data-theme="light" className="overflow-hidden bg-sky pb-10 pt-24 md:pt-32">
+      <section data-theme="light" className="overflow-hidden bg-canvas pb-10 pt-20 md:pt-28">
         <div className="container-x">
-          <Reveal className="max-w-[640px] md:mx-auto md:text-center">
-            <h2 className="h-section">In every teacher&apos;s pocket.</h2>
-            <p className="mt-5 text-[18px] text-navy/80">Teacher and student apps, branded with your school&apos;s name.</p>
+          <Reveal>
+            <SectionHeader label="Mobile apps" title="In every teacher’s pocket." description="Teacher and student apps, branded with your school’s name." />
           </Reveal>
           <FitScale width={760} height={600} className="mt-12">
             <div className="relative h-full w-full">
