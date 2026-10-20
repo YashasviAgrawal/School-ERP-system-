@@ -19,12 +19,13 @@ import {
 export type ModuleTone = 'blue' | 'green' | 'amber' | 'rose' | 'violet' | 'teal'
 
 export const TONES: Record<ModuleTone, { bg: string; fg: string }> = {
-  blue: { bg: '#E8EFFF', fg: '#2F5BD8' },
-  green: { bg: '#E3F5EC', fg: '#1E8A57' },
-  amber: { bg: '#FFF1DA', fg: '#B76E00' },
-  rose: { bg: '#FDE7EC', fg: '#C2364F' },
-  violet: { bg: '#EEE9FF', fg: '#6741D9' },
-  teal: { bg: '#DFF4F2', fg: '#0F7F78' },
+  // earthy tones that sit with midnight navy and honey oak
+  blue: { bg: '#E6EAF1', fg: '#3B5070' }, // slate
+  green: { bg: '#E5EDE4', fg: '#4F7454' }, // sage
+  amber: { bg: '#F5E8D4', fg: '#9A6A35' }, // honey oak
+  rose: { bg: '#F6E4DD', fg: '#A4553C' }, // terracotta
+  violet: { bg: '#EEE6EE', fg: '#7A5576' }, // mauve
+  teal: { bg: '#E1ECEB', fg: '#3E7470' }, // muted teal
 }
 
 export type ErpModule = { title: string; line: string; icon: ComponentType<IconProps>; tone: ModuleTone }

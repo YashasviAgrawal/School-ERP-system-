@@ -57,7 +57,7 @@ export function GetSeen() {
       id="services"
       data-theme="light"
       aria-labelledby="services-title"
-      className="relative bg-white"
+      className="relative bg-surface"
       style={isPinned ? { height: `calc(100vh + ${dist * 1.15}px)` } : undefined}
     >
       <div className={cx(isPinned ? 'sticky top-0 flex h-svh flex-col justify-center overflow-hidden pt-[72px]' : 'section')}>
@@ -155,8 +155,8 @@ function SearchVisual() {
       </div>
       {[0.55, 0.38].map((o, i) => (
         <div key={i} className="flex flex-col gap-2 px-4 py-1" style={{ opacity: o }}>
-          <span className="h-2.5 w-[46%] rounded-full bg-[#E3E9F1]" />
-          <span className="h-2 w-[70%] rounded-full bg-[#EEF2F7]" />
+          <span className="h-2.5 w-[46%] rounded-full bg-[#E9E1D4]" />
+          <span className="h-2 w-[70%] rounded-full bg-[#F2ECE3]" />
         </div>
       ))}
     </div>
@@ -170,12 +170,12 @@ function SocialVisual() {
         <Pin size={14} /> Parents within 8 km of campus
       </div>
       <div className="w-[260px] translate-y-[2px] rounded-t-[40px] bg-device px-[10px] pt-[10px] shadow-[var(--shadow-device)]">
-        <div className="overflow-hidden rounded-t-[31px] bg-white text-[12px] text-[#0E254E]">
+        <div className="overflow-hidden rounded-t-[31px] bg-white text-[12px] text-[#1E2B40]">
           <div className="flex items-center gap-2 px-3.5 pb-2.5 pt-4">
             <span className="grid h-8 w-8 place-items-center rounded-full bg-brand text-[10px] font-bold text-white">YS</span>
             <div className="leading-tight">
               <div className="font-bold">yourschool</div>
-              <div className="text-[10px] text-[#5F6B7D]">Sponsored</div>
+              <div className="text-[10px] text-[#6A6458]">Sponsored</div>
             </div>
           </div>
           <div className="relative flex aspect-square flex-col justify-end bg-brand-light p-5">
@@ -196,11 +196,11 @@ function SocialVisual() {
 function WebsiteVisual() {
   return (
     <div className="absolute inset-0 flex flex-col overflow-hidden rounded-2xl bg-white shadow-[var(--shadow-device)]">
-      <div className="flex items-center gap-1.5 bg-[#EDF1F6] px-4 py-2.5">
+      <div className="flex items-center gap-1.5 bg-[#F1EBE2] px-4 py-2.5">
         {[0, 1, 2].map((i) => (
-          <span key={i} className="h-2.5 w-2.5 rounded-full bg-[#D3DBE6]" />
+          <span key={i} className="h-2.5 w-2.5 rounded-full bg-[#DCD3C5]" />
         ))}
-        <span className="ml-3 flex h-6 flex-1 items-center rounded-full bg-white px-3 text-[11px] text-[#5F6B7D]">yourschool.in</span>
+        <span className="ml-3 flex h-6 flex-1 items-center rounded-full bg-white px-3 text-[11px] text-[#6A6458]">yourschool.in</span>
       </div>
       <div className="flex flex-1 flex-col gap-4 bg-paper p-5">
         <div className="flex items-center justify-between text-[11px] text-ink">

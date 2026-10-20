@@ -137,7 +137,7 @@ const TEACHERS: [string, string][] = [
   ['Mr. Joshi', 'PPPPLP'],
   ['Ms. Das', 'PPPPPP'],
 ]
-const CELL: Record<string, string> = { P: '#102C5E', L: '#4A6390', O: '#B4C6DE' }
+const CELL: Record<string, string> = { P: '#2C3E5C', L: '#C08A4E', O: '#E6D3B3' }
 
 function TeacherTile() {
   const [ref, inView] = useInView<HTMLDivElement>({ rootMargin: '0px 0px -20% 0px' })
@@ -199,13 +199,13 @@ function GrowthTile() {
         </div>
         <svg viewBox="0 0 400 200" className="mt-4 block h-auto w-full overflow-visible">
           {[50, 100, 150].map((y) => (
-            <line key={y} x1="0" x2="400" y1={y} y2={y} stroke="#EDF1F6" />
+            <line key={y} x1="0" x2="400" y1={y} y2={y} stroke="#F1EBE2" />
           ))}
-          <path className="fade-late" d={`${LINE} L 400 200 L 0 200 Z`} fill="#B4C6DE" opacity=".8" />
-          <path className="draw-path" d={LINE} fill="none" stroke="#102C5E" strokeWidth="3.5" strokeLinecap="round" pathLength={1} />
+          <path className="fade-late" d={`${LINE} L 400 200 L 0 200 Z`} fill="#E6D3B3" opacity=".8" />
+          <path className="draw-path" d={LINE} fill="none" stroke="#2C3E5C" strokeWidth="3.5" strokeLinecap="round" pathLength={1} />
           <g className="fade-late">
-            <circle cx="400" cy="26" r="14" fill="#4A6390" opacity=".18" />
-            <circle cx="400" cy="26" r="7.5" fill="#4A6390" />
+            <circle cx="400" cy="26" r="14" fill="#C08A4E" opacity=".18" />
+            <circle cx="400" cy="26" r="7.5" fill="#C08A4E" />
             <circle cx="400" cy="26" r="3" fill="#fff" />
           </g>
         </svg>
@@ -223,7 +223,7 @@ function GrowthTile() {
 function TrainingTile() {
   return (
     <TileShell title="Teacher training" line="Hands-on workshops, run at your school, that help teachers use technology in every class.">
-      <div className="relative min-h-[300px] overflow-hidden rounded-xl bg-[repeating-linear-gradient(135deg,#B4C6DE_0_16px,#C9D6E8_16px_32px)] md:min-h-[330px]">
+      <div className="relative min-h-[300px] overflow-hidden rounded-xl bg-[repeating-linear-gradient(135deg,#E6D3B3_0_16px,#EFE2CC_16px_32px)] md:min-h-[330px]">
         {/* Replace with: <img src="/images/training.jpg" alt="Teachers at a workshop" className="absolute inset-0 h-full w-full object-cover" /> */}
         <div className="absolute inset-0 flex justify-center pt-12 text-center text-ink md:items-center md:pb-10 md:pt-0">
           <div>
@@ -239,7 +239,7 @@ function TrainingTile() {
           </div>
           <div className="flex items-center gap-2 rounded-xl bg-brand py-2 pl-2 pr-4 text-[13px] font-semibold text-white">
             <span className="flex -space-x-1.5">
-              {['#B4C6DE', '#FFFFFF', '#4A6390', '#EBF0F6'].map((c) => (
+              {['#E6D3B3', '#FFFFFF', '#C08A4E', '#F3ECE1'].map((c) => (
                 <span key={c} className="h-7 w-7 rounded-full ring-2 ring-brand" style={{ background: c }} />
               ))}
             </span>

@@ -8,8 +8,8 @@ export function Proof() {
   const [first, ...rest] = site.testimonials
   return (
     <section data-theme="dark" aria-labelledby="proof-title" className="section relative overflow-hidden bg-brand-deep text-white">
-      <div aria-hidden="true" className="bg-grid absolute inset-0 [mask-image:radial-gradient(ellipse_70%_60%_at_50%_30%,#000,transparent_75%)]" style={{ '--grid-line': 'rgb(180 198 222 / .07)' } as CSSProperties} />
-      <div aria-hidden="true" className="glow glow-drift" style={{ width: 560, height: 560, left: '-12%', top: '-30%', background: 'rgb(47 107 255 / .28)' }} />
+      <div aria-hidden="true" className="bg-grid absolute inset-0 [mask-image:radial-gradient(ellipse_70%_60%_at_50%_30%,#000,transparent_75%)]" style={{ '--grid-line': 'rgb(214 204 187 / .07)' } as CSSProperties} />
+      <div aria-hidden="true" className="glow glow-drift" style={{ width: 560, height: 560, left: '-12%', top: '-30%', background: 'rgb(192 138 78 / .28)' }} />
 
       <div className="container-x relative">
         <Reveal>
@@ -44,7 +44,7 @@ export function Proof() {
 function Caption({ t }: { t: Testimonial }) {
   return (
     <figcaption className="mt-8 flex items-center gap-4">
-      <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-[linear-gradient(135deg,#2F6BFF,#4A6390)] font-display text-[17px] font-semibold">
+      <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-[linear-gradient(135deg,#C08A4E,#8B5A24)] font-display text-[17px] font-semibold">
         {t.name.replace(/[^A-Za-z]/g, '').charAt(0) || 'P'}
       </span>
       <span>

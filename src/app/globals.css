@@ -3,22 +3,24 @@
 /* ───────────────────────── Design tokens ───────────────────────── */
 @theme {
   /* Palette. Colours are named by role, so re-theming means changing these values only. */
-  --color-surface: #ffffff; /* page background */
-  --color-ink: #0e254e; /* text */
-  --color-muted: #56647a; /* secondary text: 6:1 on white, 5.2:1 on canvas */
-  --color-brand: #102c5e; /* navy: buttons, badges, dark sections. 13.6:1 with white text */
-  --color-brand-deep: #061534; /* darkest navy: the ERP showcase section */
-  --color-brand-mid: #4a6390; /* steel blue: where a second shade must stand apart from navy. 6:1 with white */
-  --color-brand-light: #b4c6de; /* light steel blue that carries text: 7.8:1 on navy, and ink sits on it */
-  --color-brand-wash: #e4eaf6; /* faint fills */
-  --color-canvas: #ebf0f6; /* pale blue panels and alternate sections */
-  --color-paper: #f7f9fc;
+  /* "Midnight Navy and Honey Oak": muted navy, warm oak, brass, on a warm cream ground */
+  --color-surface: #fbf8f3; /* warm off-white page background */
+  --color-ink: #1e2b40; /* text */
+  --color-muted: #5e5a52; /* warm grey secondary text: 6.6:1 on surface, 5.8:1 on canvas */
+  --color-brand: #2c3e5c; /* midnight navy: buttons, badges, dark sections. 10.9:1 with white text */
+  --color-brand-deep: #1b2840; /* darkest navy: dark sections and footer */
+  --color-brand-mid: #5a6b86; /* slate: where a second shade must stand apart from navy. 5.4:1 with white */
+  --color-brand-light: #d6ccbb; /* warm sand that carries text on navy: 9.6:1 on brand-deep */
+  --color-brand-wash: #eee6d9; /* faint fills */
+  --color-canvas: #f3ece1; /* warm cream panels and alternate sections */
+  --color-paper: #faf6f0;
   --color-device: #0b1220;
 
-  /* Signal blue: dots, glows, small highlights. Never a button fill. */
-  --color-accent: #2f6bff;
-  --color-accent-ink: #1d4ed8; /* 6.7:1 on white, for small text */
-  --color-accent-soft: #e8efff;
+  /* Honey oak: dots, glows, icons and highlights. Never a button fill. */
+  --color-accent: #c08a4e;
+  --color-accent-ink: #8b5a24; /* deep oak for small text: 5.5:1 on white */
+  --color-accent-soft: #f4e7d3;
+  --color-brass: #c9a26b; /* thin seams and rings, as in the reference */
 
   /* The ERP product as schools see it (maroon on stone), used only inside the laptop mockup */
   --color-erp: #892d24;
@@ -38,9 +40,9 @@
   --radius-card: 16px;
   --radius-frame: 20px;
 
-  --shadow-tile: 0 1px 2px rgb(14 37 78 / 0.04), 0 12px 32px -20px rgb(14 37 78 / 0.2);
-  --shadow-float: 0 2px 6px rgb(14 37 78 / 0.06), 0 28px 56px -24px rgb(14 37 78 / 0.45);
-  --shadow-device: 0 60px 100px -50px rgb(6 21 52 / 0.65);
+  --shadow-tile: 0 1px 2px rgb(30 43 64 / 0.04), 0 12px 32px -20px rgb(30 43 64 / 0.2);
+  --shadow-float: 0 2px 6px rgb(30 43 64 / 0.06), 0 28px 56px -24px rgb(30 43 64 / 0.45);
+  --shadow-device: 0 60px 100px -50px rgb(17 26 42 / 0.65);
 }
 
 @custom-variant js (.js &);
@@ -167,7 +169,7 @@
     height: 7px;
     border-radius: 999px;
     background: var(--color-accent);
-    box-shadow: 0 0 0 3px rgb(47 107 255 / 0.18);
+    box-shadow: 0 0 0 3px rgb(192 138 78 / 0.18);
   }
 
   .btn {
@@ -210,20 +212,20 @@
     color: #fff;
     box-shadow:
       inset 0 1px 0 rgb(255 255 255 / 0.14),
-      0 10px 22px -12px rgb(16 44 94 / 0.55);
+      0 10px 22px -12px rgb(44 62 92 / 0.55);
   }
   .btn-primary:hover {
     box-shadow:
       inset 0 1px 0 rgb(255 255 255 / 0.14),
-      0 16px 30px -14px rgb(16 44 94 / 0.6);
+      0 16px 30px -14px rgb(44 62 92 / 0.6);
   }
   .btn-ghost {
     background: #fff;
     color: var(--color-ink);
-    box-shadow: inset 0 0 0 1px rgb(14 37 78 / 0.16);
+    box-shadow: inset 0 0 0 1px rgb(30 43 64 / 0.16);
   }
   .btn-ghost:hover {
-    box-shadow: inset 0 0 0 1px rgb(14 37 78 / 0.4);
+    box-shadow: inset 0 0 0 1px rgb(30 43 64 / 0.4);
   }
   .btn-light {
     background: #fff;
@@ -236,7 +238,7 @@
     background: #fff;
     box-shadow:
       var(--shadow-tile),
-      inset 0 0 0 1px rgb(14 37 78 / 0.08);
+      inset 0 0 0 1px rgb(30 43 64 / 0.08);
     transition:
       transform 0.7s var(--ease-out-expo),
       box-shadow 0.7s var(--ease-out-expo);
@@ -245,9 +247,9 @@
     .tile:hover {
       transform: translateY(-6px);
       box-shadow:
-        0 2px 4px rgb(14 37 78 / 0.05),
-        0 32px 56px -32px rgb(14 37 78 / 0.36),
-        inset 0 0 0 1px rgb(14 37 78 / 0.08);
+        0 2px 4px rgb(30 43 64 / 0.05),
+        0 32px 56px -32px rgb(30 43 64 / 0.36),
+        inset 0 0 0 1px rgb(30 43 64 / 0.08);
     }
   }
 
@@ -255,7 +257,7 @@
     height: 3rem;
     width: 100%;
     border-radius: var(--radius-control);
-    border: 1px solid rgb(14 37 78 / 0.18);
+    border: 1px solid rgb(30 43 64 / 0.18);
     background: #fff;
     padding-inline: 1rem;
     color: var(--color-ink);
@@ -265,12 +267,12 @@
       box-shadow 0.2s;
   }
   .field:hover {
-    border-color: rgb(14 37 78 / 0.35);
+    border-color: rgb(30 43 64 / 0.35);
   }
   .field:focus {
     outline: none;
     border-color: var(--color-brand);
-    box-shadow: 0 0 0 4px rgb(180 198 222 / 0.9);
+    box-shadow: 0 0 0 4px rgb(214 204 187 / 0.9);
   }
   .field[aria-invalid='true'] {
     border-color: #a23b3b;
@@ -291,14 +293,14 @@
   background-color: rgb(255 255 255 / 0.8);
   -webkit-backdrop-filter: blur(16px) saturate(1.4);
   backdrop-filter: blur(16px) saturate(1.4);
-  box-shadow: 0 1px 0 rgb(14 37 78 / 0.08);
+  box-shadow: 0 1px 0 rgb(30 43 64 / 0.08);
 }
 .nav[data-theme='dark'] {
   color: #fff;
 }
 .nav[data-theme='dark'][data-scrolled='true'] {
-  background-color: rgb(16 44 94 / 0.82);
-  box-shadow: 0 1px 0 rgb(180 198 222 / 0.14);
+  background-color: rgb(44 62 92 / 0.82);
+  box-shadow: 0 1px 0 rgb(214 204 187 / 0.14);
 }
 .nav-cta {
   background: var(--color-brand);
@@ -367,7 +369,7 @@
 }
 .marker-svg path {
   fill: none;
-  stroke: var(--marker, var(--color-brand-light));
+  stroke: var(--marker, #e8cc9b);
   stroke-width: 32;
   stroke-linecap: round;
   stroke-dasharray: 1;
@@ -510,8 +512,8 @@
 /* ───────────────────────── Backgrounds: blueprint grid and soft glows ───────────────────────── */
 .bg-grid {
   background-image:
-    linear-gradient(var(--grid-line, rgb(14 37 78 / 0.06)) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-line, rgb(14 37 78 / 0.06)) 1px, transparent 1px);
+    linear-gradient(var(--grid-line, rgb(30 43 64 / 0.06)) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line, rgb(30 43 64 / 0.06)) 1px, transparent 1px);
   background-size: 56px 56px;
   background-position: -1px -1px;
 }

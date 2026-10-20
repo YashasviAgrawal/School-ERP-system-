@@ -147,7 +147,7 @@ export function Laptop({
           <div className="absolute rounded-[13px] bg-[#BBBBBF] p-[6px]" style={{ left: 40, right: 40, top: 44, height: 238 }}>
             <div className="h-full w-full" style={{ backgroundImage: KEYS, backgroundSize: 'calc(100% / 15) calc(100% / 6)' }} />
           </div>
-          <div className="absolute left-1/2 top-[300px] h-[148px] w-[252px] -translate-x-1/2 rounded-[15px] bg-[#D8D8DB] shadow-[inset_0_0_0_1px_rgb(14_37_78/.12)]" />
+          <div className="absolute left-1/2 top-[300px] h-[148px] w-[252px] -translate-x-1/2 rounded-[15px] bg-[#D8D8DB] shadow-[inset_0_0_0_1px_rgb(30_43_64/.12)]" />
         </div>
 
         {/* lid */}
@@ -155,7 +155,7 @@ export function Laptop({
           {/* screen side */}
           <div
             className="absolute inset-0 overflow-hidden rounded-b-[8px] rounded-t-[22px] bg-device [backface-visibility:hidden]"
-            style={{ padding: '16px 14px 20px', boxShadow: 'inset 0 0 0 1.5px rgb(180 198 222 / .14)' }}
+            style={{ padding: '16px 14px 20px', boxShadow: 'inset 0 0 0 1.5px rgb(214 204 187 / .14)' }}
           >
             <span className="absolute left-1/2 top-[6px] h-[5px] w-[5px] -translate-x-1/2 rounded-full bg-[#2E2E33]" />
             <div className="relative h-full w-full overflow-hidden rounded-[5px] bg-[#F7F9FC]">

@@ -26,7 +26,7 @@ export function BeforeAfter() {
         </Reveal>
 
         <Reveal className="mt-12">
-          <div className="@container relative aspect-[4/5] overflow-hidden rounded-[var(--radius-frame)] bg-white shadow-[0_2px_6px_rgb(14_37_78/.05),0_40px_80px_-48px_rgb(14_37_78/.45)] ring-1 ring-ink/[.08] md:aspect-[16/9]">
+          <div className="@container relative aspect-[4/5] overflow-hidden rounded-[var(--radius-frame)] bg-white shadow-[0_2px_6px_rgb(30_43_64/.05),0_40px_80px_-48px_rgb(30_43_64/.45)] ring-1 ring-ink/[.08] md:aspect-[16/9]">
             <div className="absolute inset-0">
               <NewSite />
             </div>
@@ -34,7 +34,7 @@ export function BeforeAfter() {
               <OldSite />
             </div>
 
-            <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 z-10 w-[3px] -translate-x-1/2 bg-white shadow-[0_0_0_1px_rgb(14_37_78/.15)]" style={{ left: `${pos}%` }} />
+            <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 z-10 w-[3px] -translate-x-1/2 bg-white shadow-[0_0_0_1px_rgb(30_43_64/.15)]" style={{ left: `${pos}%` }} />
             <input
               type="range"
               min={0}
@@ -47,13 +47,13 @@ export function BeforeAfter() {
             />
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute top-1/2 z-30 grid h-14 w-14 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-brand text-white shadow-[0_16px_34px_-12px_rgb(14_37_78/.75)] transition-shadow peer-focus-visible:ring-4 peer-focus-visible:ring-brand-mid peer-focus-visible:ring-offset-2 peer-focus-visible:ring-offset-brand"
+              className="pointer-events-none absolute top-1/2 z-30 grid h-14 w-14 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-brand text-white shadow-[0_16px_34px_-12px_rgb(30_43_64/.75)] transition-shadow peer-focus-visible:ring-4 peer-focus-visible:ring-brand-mid peer-focus-visible:ring-offset-2 peer-focus-visible:ring-offset-brand"
               style={{ left: `${pos}%` }}
             >
               <Drag size={24} />
             </div>
             <span className="pointer-events-none absolute bottom-4 left-4 z-30 rounded-lg bg-ink/85 px-3 py-1.5 text-[13px] font-semibold text-white md:bottom-5 md:left-5">Before</span>
-            <span className="pointer-events-none absolute bottom-4 right-4 z-30 rounded-lg bg-white px-3 py-1.5 text-[13px] font-semibold text-ink shadow-[0_6px_16px_-8px_rgb(14_37_78/.5)] md:bottom-5 md:right-5">
+            <span className="pointer-events-none absolute bottom-4 right-4 z-30 rounded-lg bg-white px-3 py-1.5 text-[13px] font-semibold text-ink shadow-[0_6px_16px_-8px_rgb(30_43_64/.5)] md:bottom-5 md:right-5">
               After
             </span>
           </div>
@@ -135,7 +135,7 @@ function NewSite() {
           <p className="mt-[.9em] max-w-[28em] text-[1.05em] text-muted md:text-[1.15em]">A school where every child is known by name, and every day starts with a question.</p>
           <div className="mt-[1.4em] flex flex-wrap gap-[.7em]">
             <span className="rounded-full bg-brand px-[1.7em] py-[.85em] font-semibold text-white">Book a campus visit</span>
-            <span className="rounded-full px-[1.7em] py-[.85em] font-semibold shadow-[inset_0_0_0_1.5px_rgb(14_37_78/.3)]">Fee structure</span>
+            <span className="rounded-full px-[1.7em] py-[.85em] font-semibold shadow-[inset_0_0_0_1.5px_rgb(30_43_64/.3)]">Fee structure</span>
           </div>
         </div>
         <div className="relative aspect-[4/3] overflow-hidden rounded-[1.4em] bg-brand-light md:order-first md:aspect-[4/3.3]">

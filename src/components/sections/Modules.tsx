@@ -187,7 +187,7 @@ function RoleTabs() {
           id={`role-panel-${r.id}`}
           aria-labelledby={`role-tab-${r.id}`}
           hidden={i !== active}
-          className="tab-in mt-8 grid items-center gap-8 rounded-[28px] bg-white p-5 shadow-[0_2px_6px_rgb(14_37_78/.04),0_40px_80px_-48px_rgb(14_37_78/.35)] ring-1 ring-ink/[.08] md:p-8 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14 lg:p-12 [&[hidden]]:hidden"
+          className="tab-in mt-8 grid items-center gap-8 rounded-[28px] bg-white p-5 shadow-[0_2px_6px_rgb(30_43_64/.04),0_40px_80px_-48px_rgb(30_43_64/.35)] ring-1 ring-ink/[.08] md:p-8 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14 lg:p-12 [&[hidden]]:hidden"
         >
           <div className="lg:py-4">
             <p className="text-[13px] font-bold uppercase tracking-[.1em] text-accent-ink">For the {r.label.toLowerCase()}</p>
@@ -225,9 +225,9 @@ function RoleVisual({ kind }: { kind: Visual }) {
   const chip = CHIPS[kind]
   const desktop = kind === 'dashboard' || kind === 'fees'
   return (
-    <div aria-hidden="true" className="relative aspect-square overflow-hidden rounded-[22px] bg-[linear-gradient(150deg,#EEF3FB,#D9E3F2)] md:aspect-[4/3]">
+    <div aria-hidden="true" className="relative aspect-square overflow-hidden rounded-[22px] bg-[linear-gradient(150deg,#F6F0E7,#E7DBC9)] md:aspect-[4/3]">
       <div className="bg-grid absolute inset-0" />
-      <div className="glow" style={{ width: '60%', height: '60%', right: '-10%', top: '-10%', background: 'rgb(47 107 255 / .18)' }} />
+      <div className="glow" style={{ width: '60%', height: '60%', right: '-10%', top: '-10%', background: 'rgb(192 138 78 / .18)' }} />
       {desktop ? (
         <div className="absolute inset-x-[6%] top-1/2 -translate-y-1/2">
           <BrowserFrame>{kind === 'dashboard' ? <DashboardScreen /> : <FeesScreen />}</BrowserFrame>
@@ -251,9 +251,9 @@ function RoleVisual({ kind }: { kind: Visual }) {
 function BrowserFrame({ children }: { children: ReactNode }) {
   return (
     <div className="overflow-hidden rounded-[14px] bg-white shadow-[var(--shadow-float)] ring-1 ring-ink/10">
-      <div className="flex h-8 items-center gap-1.5 border-b border-ink/[.06] bg-[#F3F6FA] px-3">
+      <div className="flex h-8 items-center gap-1.5 border-b border-ink/[.06] bg-[#F4EFE7] px-3">
         {[0, 1, 2].map((i) => (
-          <span key={i} className="h-2.5 w-2.5 rounded-full bg-[#D3DBE6]" />
+          <span key={i} className="h-2.5 w-2.5 rounded-full bg-[#DCD3C5]" />
         ))}
         <span className="ml-3 h-5 max-w-[220px] flex-1 truncate rounded-md bg-white px-2 text-[11px] leading-5 text-muted">erp.yourschool.in</span>
       </div>

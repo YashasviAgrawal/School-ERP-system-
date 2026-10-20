@@ -18,7 +18,7 @@ const ROWS: [string, boolean, boolean][] = [
 
 export function WhyUs() {
   return (
-    <section data-theme="light" aria-labelledby="why-title" className="section bg-white">
+    <section data-theme="light" aria-labelledby="why-title" className="section bg-surface">
       <div className="container-x grid items-center gap-12 lg:grid-cols-12 lg:gap-8">
         <div className="lg:col-span-5">
           <Reveal>
@@ -38,7 +38,7 @@ export function WhyUs() {
         </div>
 
         <Reveal delay={100} className="lg:col-span-7">
-          <div className="overflow-hidden rounded-[24px] bg-white shadow-[0_2px_6px_rgb(14_37_78/.04),0_40px_80px_-48px_rgb(14_37_78/.35)] ring-1 ring-ink/[.08]">
+          <div className="overflow-hidden rounded-[24px] bg-white shadow-[0_2px_6px_rgb(30_43_64/.04),0_40px_80px_-48px_rgb(30_43_64/.35)] ring-1 ring-ink/[.08]">
             <table className="w-full border-separate border-spacing-0 text-left">
               <caption className="sr-only">What {site.name} offers compared with an ERP vendor and a marketing agency</caption>
               <thead>

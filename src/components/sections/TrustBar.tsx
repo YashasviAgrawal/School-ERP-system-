@@ -11,7 +11,7 @@ import { site, type Stat } from '@/lib/site'
 /** The headline numbers, right after the opening story. */
 export function TrustBar() {
   return (
-    <section data-theme="light" aria-label="Our numbers" className="relative bg-white pb-4 pt-16 md:pt-20">
+    <section data-theme="light" aria-label="Our numbers" className="relative bg-surface pb-4 pt-16 md:pt-20">
       <div className="container-x">
         <dl className="grid gap-px overflow-hidden rounded-[24px] bg-ink/[.08] ring-1 ring-ink/[.08] sm:grid-cols-2 lg:grid-cols-4">
           {site.stats.map((s, i) => (

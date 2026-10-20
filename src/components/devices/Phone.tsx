@@ -9,11 +9,11 @@ export function Phone({ children, className, style, ref }: { children: ReactNode
       aria-hidden="true"
       className={cx('h-[520px] w-[250px] rounded-[46px] bg-device p-[10px]', className)}
       style={{
-        boxShadow: 'inset 0 0 0 1.5px rgb(180 198 222 / .16), 0 2px 6px rgb(6 21 52 / .2), 0 50px 80px -40px rgb(6 21 52 / .7)',
+        boxShadow: 'inset 0 0 0 1.5px rgb(214 204 187 / .16), 0 2px 6px rgb(17 26 42 / .2), 0 50px 80px -40px rgb(17 26 42 / .7)',
         ...style,
       }}
     >
-      <div className="relative h-full overflow-hidden rounded-[37px] bg-[#F7F9FC] text-[12px] leading-[1.35] text-[#0E254E]">
+      <div className="relative h-full overflow-hidden rounded-[37px] bg-[#F7F9FC] text-[12px] leading-[1.35] text-[#1E2B40]">
         <span className="absolute left-1/2 top-[10px] z-10 h-[23px] w-[76px] -translate-x-1/2 rounded-full bg-device" />
         {children}
       </div>
@@ -43,9 +43,9 @@ function AppShell({ brand, greeting, sub, children }: { brand: Brand; greeting: 
       <div className="flex flex-col gap-[10px] p-[14px]">{children}</div>
       <div className="absolute inset-x-[14px] bottom-[14px] flex h-[52px] items-center justify-around rounded-[18px] bg-white shadow-[0_1px_0_rgb(0_0_0/.04)]">
         <span className="h-[18px] w-[18px] rounded-[6px]" style={{ background: brand.color }} />
-        <span className="h-[18px] w-[18px] rounded-[6px] bg-[#E6EBF2]" />
-        <span className="h-[18px] w-[18px] rounded-[6px] bg-[#E6EBF2]" />
-        <span className="h-[18px] w-[18px] rounded-[6px] bg-[#E6EBF2]" />
+        <span className="h-[18px] w-[18px] rounded-[6px] bg-[#ECE5DA]" />
+        <span className="h-[18px] w-[18px] rounded-[6px] bg-[#ECE5DA]" />
+        <span className="h-[18px] w-[18px] rounded-[6px] bg-[#ECE5DA]" />
       </div>
     </>
   )
@@ -54,7 +54,7 @@ function AppShell({ brand, greeting, sub, children }: { brand: Brand; greeting: 
 function Card({ label, value, children }: { label: string; value: ReactNode; children?: ReactNode }) {
   return (
     <div className="rounded-[16px] bg-white px-[14px] py-[12px] shadow-[0_1px_0_rgb(0_0_0/.04)]">
-      <div className="text-[11px] text-[#5F6B7D]">{label}</div>
+      <div className="text-[11px] text-[#6A6458]">{label}</div>
       <div className="mt-[2px] text-[14px] font-bold">{value}</div>
       {children}
     </div>

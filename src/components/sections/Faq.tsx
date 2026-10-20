@@ -6,7 +6,7 @@ import { site, whatsappLink } from '@/lib/site'
 /** Native <details>, so it works without JavaScript; opening animates where the browser supports it. */
 export function Faq() {
   return (
-    <section id="faq" data-theme="light" aria-labelledby="faq-title" className="section bg-white">
+    <section id="faq" data-theme="light" aria-labelledby="faq-title" className="section bg-surface">
       <div className="container-x grid gap-12 lg:grid-cols-12 lg:gap-8">
         <div className="lg:col-span-4">
           <div className="lg:sticky lg:top-28">

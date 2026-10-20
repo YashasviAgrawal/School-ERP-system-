@@ -4,9 +4,9 @@ import { cx } from '@/lib/cx'
 type Tone = 'brand' | 'light' | 'dark' | 'emboss'
 
 const TONES: Record<Tone, { tile: string; stroke: string; dot: string }> = {
-  brand: { tile: '#102C5E', stroke: '#B4C6DE', dot: '#FFFFFF' },
-  light: { tile: '#FFFFFF', stroke: '#4A6390', dot: '#102C5E' },
-  dark: { tile: '#102C5E', stroke: '#B4C6DE', dot: '#FFFFFF' },
+  brand: { tile: '#2C3E5C', stroke: '#D9A971', dot: '#FFFFFF' },
+  light: { tile: '#FFFFFF', stroke: '#C08A4E', dot: '#2C3E5C' },
+  dark: { tile: '#2C3E5C', stroke: '#D9A971', dot: '#FFFFFF' },
   emboss: { tile: 'rgba(14,37,78,0.07)', stroke: 'rgba(255,255,255,0.75)', dot: 'rgba(255,255,255,0.75)' },
 }
 

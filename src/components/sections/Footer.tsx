@@ -19,7 +19,7 @@ const link = 'inline-block py-1.5 underline-offset-4 transition-colors hover:tex
 export function Footer() {
   return (
     <footer data-theme="dark" className="relative overflow-hidden bg-brand-deep text-[15px] text-brand-light">
-      <div aria-hidden="true" className="bg-grid absolute inset-0 [mask-image:linear-gradient(#000,transparent_70%)]" style={{ '--grid-line': 'rgb(180 198 222 / .06)' } as CSSProperties} />
+      <div aria-hidden="true" className="bg-grid absolute inset-0 [mask-image:linear-gradient(#000,transparent_70%)]" style={{ '--grid-line': 'rgb(214 204 187 / .06)' } as CSSProperties} />
 
       <div className="container-x relative pt-16 md:pt-20">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1.3fr] lg:gap-10">
@@ -87,7 +87,7 @@ export function Footer() {
         {/* oversized wordmark, cropped by the page edge */}
         <div
           aria-hidden="true"
-          className="pointer-events-none mt-8 select-none whitespace-nowrap bg-[linear-gradient(180deg,rgb(180_198_222/.16),rgb(180_198_222/0)_85%)] bg-clip-text text-center font-display text-[13vw] font-bold leading-[.8] tracking-[-0.055em] text-transparent lg:text-[10rem]"
+          className="pointer-events-none mt-8 select-none whitespace-nowrap bg-[linear-gradient(180deg,rgb(214_204_187/.16),rgb(214_204_187/0)_85%)] bg-clip-text text-center font-display text-[13vw] font-bold leading-[.8] tracking-[-0.055em] text-transparent lg:text-[10rem]"
         >
           {site.name}
         </div>

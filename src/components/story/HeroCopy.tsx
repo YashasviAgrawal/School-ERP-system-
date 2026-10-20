@@ -8,10 +8,11 @@ const delay = (ms: number): CSSProperties => ({ animationDelay: `${ms}ms` })
 
 const HIGHLIGHTS = ['Teacher and student apps', 'Online fee collection', 'Training at your school']
 
-/** The navy stage disc behind the hero laptop, with soft rings around it. */
+/** The midnight-navy stage disc behind the hero laptop: a thin brass seam, then soft honey rings. */
 export const DISC_STYLE: CSSProperties = {
-  background: 'radial-gradient(circle at 32% 28%, #2C5296 0%, #102C5E 55%, #061534 100%)',
-  boxShadow: '0 0 0 3vw rgb(16 44 94 / .05), 0 0 0 6vw rgb(16 44 94 / .03), 0 40px 120px -20px rgb(16 44 94 / .5)',
+  background: 'radial-gradient(circle at 32% 28%, #3E5478 0%, #2C3E5C 55%, #1B2840 100%)',
+  boxShadow:
+    '0 0 0 3px #C9A26B, 0 0 0 3vw rgb(192 138 78 / .07), 0 0 0 6vw rgb(192 138 78 / .04), 0 40px 120px -20px rgb(44 62 92 / .5)',
 }
 
 /** Blueprint grid and two soft glows behind the hero. */
@@ -19,8 +20,8 @@ export function HeroBackdrop() {
   return (
     <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
       <div className="bg-grid bg-grid-fade absolute inset-0" />
-      <div className="glow glow-drift" style={{ width: '38vw', height: '38vw', left: '56vw', top: '12vh', background: 'rgb(47 107 255 / .16)' }} />
-      <div className="glow" style={{ width: '30vw', height: '30vw', left: '-8vw', top: '-10vh', background: 'rgb(180 198 222 / .55)' }} />
+      <div className="glow glow-drift" style={{ width: '38vw', height: '38vw', left: '56vw', top: '12vh', background: 'rgb(192 138 78 / .16)' }} />
+      <div className="glow" style={{ width: '30vw', height: '30vw', left: '-8vw', top: '-10vh', background: 'rgb(214 204 187 / .55)' }} />
     </div>
   )
 }

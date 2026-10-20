@@ -71,7 +71,7 @@ export function Nav() {
           <div>
             <div className="bg-brand-deep text-white">
               <p className="container-x flex h-10 items-center justify-center gap-3 text-[13px] md:text-[14px]">
-                <span className="hidden shrink-0 rounded-full bg-accent px-2.5 py-0.5 text-[11px] font-bold tracking-[.04em] sm:inline">{a.tag}</span>
+                <span className="hidden shrink-0 rounded-full bg-accent px-2.5 py-0.5 text-[11px] text-brand-deep font-bold tracking-[.04em] sm:inline">{a.tag}</span>
                 <span className="truncate text-white/80">{a.text}</span>
                 <AnchorLink href={a.href} className="inline-flex shrink-0 items-center gap-1 font-semibold underline-offset-4 hover:underline">
                   {a.cta}
@@ -209,7 +209,7 @@ function ModulesMenu() {
       </button>
 
       <div id="modules-menu" className="mega absolute inset-x-0 top-full -mt-3 px-5 pt-3 md:px-10" data-open={open}>
-        <div className="mega-panel mx-auto grid max-w-[980px] grid-cols-[1fr_270px] gap-2 rounded-[22px] bg-white p-2 text-ink shadow-[0_2px_6px_rgb(6_21_52/.06),0_40px_80px_-30px_rgb(6_21_52/.45)] ring-1 ring-ink/[.08]">
+        <div className="mega-panel mx-auto grid max-w-[980px] grid-cols-[1fr_270px] gap-2 rounded-[22px] bg-white p-2 text-ink shadow-[0_2px_6px_rgb(17_26_42/.06),0_40px_80px_-30px_rgb(17_26_42/.45)] ring-1 ring-ink/[.08]">
           <div className="p-4">
             <p className="px-2 text-[12px] font-bold uppercase tracking-[.1em] text-muted">ERP modules</p>
             <ul className="mt-3 grid grid-cols-3 gap-1">
@@ -226,8 +226,8 @@ function ModulesMenu() {
             </ul>
           </div>
           <div className="relative flex flex-col justify-between overflow-hidden rounded-[16px] bg-brand-deep p-6 text-white">
-            <div aria-hidden="true" className="bg-grid absolute inset-0" style={{ '--grid-line': 'rgb(180 198 222 / .08)' } as CSSProperties} />
-            <div aria-hidden="true" className="glow" style={{ width: 220, height: 220, right: -80, top: -80, background: 'rgb(47 107 255 / .45)' }} />
+            <div aria-hidden="true" className="bg-grid absolute inset-0" style={{ '--grid-line': 'rgb(214 204 187 / .08)' } as CSSProperties} />
+            <div aria-hidden="true" className="glow" style={{ width: 220, height: 220, right: -80, top: -80, background: 'rgb(192 138 78 / .45)' }} />
             <div className="relative">
               <p className="text-[12px] font-bold uppercase tracking-[.1em] text-brand-light">See it live</p>
               <p className="mt-3 font-display text-[20px] font-semibold leading-[1.25] tracking-[-0.015em]">The whole ERP, with your school’s name on it.</p>
