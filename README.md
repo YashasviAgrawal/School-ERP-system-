@@ -14,7 +14,7 @@ Node 20.9 or newer. Deploy by importing the repo into Vercel; no settings needed
 
 ## What to replace before launch
 
-Everything editable by a non-developer is in **`src/lib/site.ts`**: brand name, URL, address, email, WhatsApp number, announcement strip, ERP login link, principals' quotes, the three numbers, FAQ, partner logos. Values in `[square brackets]` are placeholders and show as such on the page until you fill them.
+Everything editable by a non-developer is in **`src/lib/site.ts`**: brand name, URL, address, email, WhatsApp number, announcement strip, ERP login link, principals' quotes, the three numbers, FAQ. Values in `[square brackets]` are placeholders and show as such on the page until you fill them.
 
 | What | Where |
 | --- | --- |
@@ -25,7 +25,6 @@ Everything editable by a non-developer is in **`src/lib/site.ts`**: brand name, 
 | Login link in the menu (hidden while empty) | `site.loginUrl` |
 | FAQ, including the pricing and data-safety answers | `site.faqs` |
 | ERP module list (menu, modules grid, footer) | `src/lib/modules.ts`, keep it to what the product really does |
-| Partner school logos | put files in `public/logos/`, list them in `site.partnerLogos` |
 | ERP screenshots (2560px, WebP < 200 KB) | `src/components/devices/ErpScreens.tsx`, one `<img>` per screen (instructions at the top of the file) |
 | Teacher training photo | `TrainingTile` in `src/components/sections/Problems.tsx` |
 | Before/after website pair (with the school's permission) | `src/components/sections/BeforeAfter.tsx` |

@@ -12,8 +12,6 @@ export type Stat = {
   placeholder: string
 }
 
-export type PartnerLogo = { name: string; src: string }
-
 export type Testimonial = {
   quote: string | null
   placeholder: string
@@ -48,10 +46,11 @@ export const site = {
     href: '#demo',
   } as { tag: string; text: string; cta: string; href: string } | null,
 
+  // Schools is real. The other two are estimates: replace them with real figures before launch.
   stats: [
-    { value: null, label: 'Schools onboarded', placeholder: '[00]' },
-    { value: null, prefix: '₹', suffix: ' L', label: 'Fees recovered for schools', placeholder: '[₹00 L]' },
-    { value: null, label: 'Admission enquiries generated', placeholder: '[000]' },
+    { value: 10, suffix: '+', label: 'Schools onboarded', placeholder: '[00]' },
+    { value: 35, prefix: '₹', suffix: ' L+', label: 'Fees recovered for schools', placeholder: '[₹00 L]' },
+    { value: 850, suffix: '+', label: 'Admission enquiries generated', placeholder: '[000]' },
   ] as Stat[],
 
   /** The first one is shown large. Add more and they appear as cards below it. */
@@ -92,9 +91,6 @@ export const site = {
       a: '[Describe where data is hosted, how often it is backed up and who can access it. Have this checked before launch.]',
     },
   ] as Faq[],
-
-  /** Add files to /public/logos and list them here, e.g. { name: 'St. Xavier’s', src: '/logos/xaviers.svg' } */
-  partnerLogos: [] as PartnerLogo[],
 }
 
 export const whatsappLink = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(site.whatsappMessage)}`

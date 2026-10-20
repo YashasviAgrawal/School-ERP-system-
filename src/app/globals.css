@@ -500,19 +500,6 @@
   translate: 24px 0;
 }
 
-/* logo marquee */
-.marquee-track {
-  animation: marquee 55s linear infinite;
-}
-.marquee:hover .marquee-track {
-  animation-play-state: paused;
-}
-@keyframes marquee {
-  to {
-    transform: translateX(-50%);
-  }
-}
-
 .scrollbar-none {
   scrollbar-width: none;
 }
@@ -726,7 +713,6 @@
     transition-delay: 0ms !important;
   }
   .lid-sweep::after,
-  .marquee-track,
   .glow-drift,
   .wa-ping,
   .role-progress {
